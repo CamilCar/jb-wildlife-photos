@@ -1,5 +1,5 @@
 """
-WSGI config for scandi_wildlife project.
+WSGI config for jb_wildlife_photos project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'scandi_wildlife.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'jb_wildlife_photos.settings')
 
 application = get_wsgi_application()
