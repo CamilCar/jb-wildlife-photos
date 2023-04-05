@@ -37,6 +37,13 @@
 
     <header class=""></header> 
 
+    
+    {% block page_header %}
+    {% endblock %}
+    
+    {% block content %}
+    {% endblock %}
+    
     {% comment %} Code snippet from ci boutiqe_ado {% endcomment %}
     {% if messages %}
         <div class="message-container">
@@ -55,13 +62,7 @@
             {% endfor %}
         </div>
     {% endif %}
-
-    {% block page_header %}
-    {% endblock %}
-
-    {% block content %}
-    {% endblock %}
-
+    
     {% block postloadjs %}
     <script type="text/javascript">
         $('.toast').toast('show');
