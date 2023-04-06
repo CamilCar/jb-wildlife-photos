@@ -1,4 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Actor&family=Roboto&family=Source+Sans+Pro:wght@400;600&display=swap');
+
+
 html {
-    height: 100%
+    height: 100%;
+    
+} 
+ 
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
+.hero-image {
+    background: url("../../media/wildlife.widescreensquirrel.index.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    height: 1040px;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+strong {
+    color: black;
+}
+.hero-text {
+    font-family: 'Aboreto', cursive;
+    margin-top: 38em;
+    margin-left: 10%;
+    font-size: 1rem;
+    display: inline-block;
+    color: #f7f6f6;
+
+}
+
+.hero-text h2 {
+    text-align: center;
+    font-family: 'Actor', sans-serif;
+}
+
+.nav-contact {
+    top: 77%;
+    left: 11%;
+    position: absolute;
+    border-radius: 50% ;
+    width: 160px;
+    height: 55px;
+}
+.nav-webshop {
+    top: 77%;
+    left: 35%;
+    position: absolute;
+    border-radius: 50% ;
+    width: 160px;
+    height: 55px;
+}
+.btn-dark{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bolder;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    color: #e2ee79;
+}
+
+.hero-nav {
+    width: 100%;
+}
