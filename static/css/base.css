@@ -24,10 +24,16 @@ h1 {
 
 h2 {
     font-size: 3rem;
+    font-weight: bold;
+}
+
+h5{
+    color: #aaaaaa;
+    font-style: normal;
 }
 
 strong {
-    color: black;
+    color: #444444;
 }
 .hero-text {
     font-family: 'Aboreto', cursive;
@@ -42,6 +48,20 @@ strong {
 .hero-text h2 {
     text-align: center;
     font-family: 'Actor', sans-serif;
+}
+
+.col span,
+h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #606060;
+}
+
+h3 {
+    font-weight: normal;
+    font-size: 25px;
+    text-align: center;
 }
 
 .nav-contact {
@@ -71,4 +91,17 @@ strong {
 
 .hero-nav {
     width: 100%;
+}
+
+.three-reasons-wrapper {
+    background-color: #e2ee79;;
+    height: auto;
+}
+
+.col {
+    margin: 40px;
+}
+
+.quote-img {
+    
 }
