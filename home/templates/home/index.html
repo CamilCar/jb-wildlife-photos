@@ -10,7 +10,15 @@
         <h1>SCANDINAVIAN WILDLIFE</h1> 
         <h2><strong> Prints </strong> by photographer</h2>
         <h2>Joris Bomert</h2>
-        {% include 'includes/main-nav.html' %}
+        <div class="hero-nav">
+          <button type="button" class="btn btn-dark nav-contact" href="#">CONTACT</button>
+          <a class="btn-dark" href="{% url 'webshop' %}" role="button">
+              <button type="button" class="btn btn-dark nav-webshop"> 
+                  WEBSHOP
+              </button>
+          </a>
+      </div>
+      
 
     </div>
 </div>
