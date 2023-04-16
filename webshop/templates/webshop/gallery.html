@@ -1,18 +1,43 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-    <div class="hero-image"  style="height: 46em;">
+  <div class="hero-image"  style="height: 46em;">
     {% include 'includes/mobile-nav.html' %}
-        <div class="hero-text">
-          {% include 'includes/main-nav.html' %}
-        </div>
+    <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
+  </div>
+  <div class="page-wrapper">
+    <div id="line"></div>
+    <div class="page-title text-center">
+      <span>WEBSHOP</span>
+      <div id="line-2"></div>
     </div>
-    <div class="page-wrapper">
-      <div id="line"></div>
-        <div class="page-title text-center">
-            <span>WEBSHOP</span>
-            <div id="line-2"></div>
-        </div>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">Filter</button>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" href="#">All</a>
+        </li>
+        {% for category in categories %}
+          <li>
+            <a class="dropdown-item" href="#">{{ category.name }}</a>
+          </li>
+        {% endfor %}
+      </ul>
     </div>
+    <div id="webshop-gallery" class="row">
+      {% for print in prints %}
+        <div>
+          <a href="#">
+            <div class="">
+              <img src="{{ print.image.url }}">
+              <h5>{{ print.name }}</h5>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 {% endblock %}
