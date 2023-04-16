@@ -5,13 +5,53 @@
 {% block content %}
 
 <div class="hero-image">
-  {% include 'includes/mobile-nav.html' %}
+  <!-- Mobile nav for index page only -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary mobile-nav">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'webshop' %}">Webshop</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Account
+              {% if user.is_authenticated %}
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item text-dark" href="#">My products</a></li>
+                          <li>
+                              <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item text-dark" href="#">Logout</a></li>
+                      </ul>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Sign</a>
+                </li>
+                  {% endif %}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End mobile nav -->
     <div class="hero-text">
         <h1>SCANDINAVIAN WILDLIFE</h1> 
         <h2><strong> Prints </strong> by photographer</h2>
         <h2>Joris Bomert</h2>
         <div class="hero-nav">
-          <button type="button" class="btn btn-dark nav-contact" href="#">CONTACT</button>
+          <button type="button" class="btn btn-dark nav-contact" href="{% url 'contact' %}">CONTACT</button>
           <a class="btn-dark" href="{% url 'webshop' %}" role="button">
               <button type="button" class="btn btn-dark nav-webshop"> 
                   WEBSHOP

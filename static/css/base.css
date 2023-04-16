@@ -103,6 +103,13 @@ h3 {
     background: black;
 }
 
+#line-2{
+    width: 3em;
+    height: 4px;
+    margin: 0 auto;
+    background: #aaaaaa;
+}
+
 .carousel {
     width: 95%;
     margin: auto;
@@ -165,6 +172,13 @@ input[type=text] {
     color: black;
 }
 
+/* General page styling */
+
+.page-title {
+    font-family: 'Aboreto', cursive;
+    color: #7a7a7a;
+    font-size: 3rem
+}
 /* Media Queries */
 
 /* Mobile and small screen devices up to 992px wide */
