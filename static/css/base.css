@@ -161,6 +161,10 @@ input[type=text] {
 
 /* Footer styles */
 
+.footer-wrapper {
+    background-color: #f7f6f6;
+}
+
 .bottom-nav a {
     color: #7a7a7a;
     font-family: 'Source Sans Pro', sans-serif;
