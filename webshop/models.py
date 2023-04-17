@@ -17,7 +17,7 @@ class Category(models.Model):
 
 class Print(models.Model):
     """
-    Creating prints data model
+    Creating prints(products) data model
     """
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='print_images')

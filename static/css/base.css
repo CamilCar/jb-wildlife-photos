@@ -32,7 +32,7 @@ h5{
     font-style: normal;
 }
 
-strong {
+.prints {
     color: #e2ee79;
     font-weight: bold;
 }
@@ -105,9 +105,14 @@ h3 {
 
 #line-2{
     width: 3em;
-    height: 4px;
+    height: 2px;
     margin: 0 auto;
     background: #aaaaaa;
+}
+
+#line-3 {
+    height: 3px;
+    background: #e2ee79;
 }
 
 .carousel {
@@ -183,6 +188,34 @@ input[type=text] {
     color: #7a7a7a;
     font-size: 3rem
 }
+
+.page-wrapper {
+    background: #444444;
+}
+
+.page-text {
+    margin-top: 40px;
+}
+
+.page-p {
+    color: #e6e6e6;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+
+.page-text h1, h5 {
+    color: #e6e6e6;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+
+.webshop-link {
+    text-decoration: none;
+    color: #f7f6f6;
+    margin-left: 4em;
+    font-size: 1.2em;
+}
+
 /* Media Queries */
 
 /* Mobile and small screen devices up to 992px wide */
@@ -230,7 +263,7 @@ input[type=text] {
     }
 
     .navbar-nav a {
-        color: #e2ee79;
+        color: white;
     }
 
     .navbar-collapse {

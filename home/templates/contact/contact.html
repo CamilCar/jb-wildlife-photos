@@ -1,18 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-    <div class="hero-image"  style="height: 46em;">
+  <div class="hero-image"  style="height: 46em;">
     {% include 'includes/mobile-nav.html' %}
-        <div class="hero-text">
-          {% include 'includes/main-nav.html' %}
-        </div>
+    <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
+  </div>
+  <div class="page-wrapper">
+    <div id="line-3"></div>
+    <div class="page-title text-center">
+      <span>CONTACT</span>
+      <div id="line-2"></div>
     </div>
-    <div class="page-wrapper">
-      <div id="line"></div>
-        <div class="page-title text-center">
-            <span>CONTACT</span>
-            <div id="line-2"></div>
-        </div>
+    <div class="page-text text-center">
+      <h5>
+        <strong>Name:</strong> Joris Bomert
+      </h5>
+      <br>
+      <h5>
+        <strong>Email:</strong> jbwildlifephotos@gmail.com
+      </h5>
+      <br>
+      <h5>
+        <strong>Location:</strong> Knutby, Sweden
+      </h5>
+      <br>
+      <p class ="page-p">
+        To reduce spam, a phone number is not shared on this site. Please send an email and I will get back to you.
+      </p>
     </div>
+    <a class="webshop-link" href="{% url 'webshop' %}"><i class="fa fa-arrow-left"style="color: #f0f2f5;"></i>Webshop</a>
+  </div>
 {% endblock %}
