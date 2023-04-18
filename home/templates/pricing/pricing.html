@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <div class="hero-image"  style="height: 46em;">
+    <div class="pricing-hero hero-image-sizing">
         {% include 'includes/mobile-nav.html' %}
         <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
     </div>
@@ -11,6 +11,7 @@
             <span>PRICING</span>
             <div id="line-2"></div>
         </div>
+        <a class="webshop-link" href="{% url 'webshop' %}"><i class="fa-regular fa-image"></i> Webshop</a>
         <div class="page-text text-center">
             <p class="page-p">
                 <p class="page-p">
@@ -28,6 +29,5 @@
                 </h5>
             </p>
         </div>
-        <a class="webshop-link" href="{% url 'webshop' %}"><i class="fa fa-arrow-left"style="color: #f0f2f5;"></i>Webshop</a>
     </div>
-{% endblock %}
+{% endblock content %}

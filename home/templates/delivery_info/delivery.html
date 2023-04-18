@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <div class="hero-image"  style="height: 46em;">
+    <div class="delivery-hero hero-image-sizing">
         {% include 'includes/mobile-nav.html' %}
         <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
     </div>
@@ -11,6 +11,7 @@
             <span>DELIVERY INFO</span>
             <div id="line-2"></div>
         </div>
+        <a class="webshop-link" href="{% url 'webshop' %}"><i class="fa-regular fa-image"></i> Webshop</a>
         <div class="page-text text-center">
             <p class="page-p">
                 Shipping fee: Traceable 6.9€.
@@ -23,10 +24,11 @@
                 <br>
                 To place an order you need to sign up. If you already have an account, you can simply log in.
                 <br>
-                Buyers from Sweden can pay with Swish. Send me an email to place the order and pay with Swish.
+                Buyers from Sweden can pay with Swish. Send me an email to place your order and I will reply as soon as I can.
             </p>
-            <p class="page-p">Your privacy is important. Click here for our terms</p>
+            <p class="page-p">
+                Your privacy is important. Click <a href="#" class="text-light">here</a> for our terms
+            </p>
         </div>
-        <a class="webshop-link" href="{% url 'webshop' %}"><i class="fa fa-arrow-left"style="color: #f0f2f5;"></i>Webshop</a>
     </div>
-{% endblock %}
+{% endblock content %}

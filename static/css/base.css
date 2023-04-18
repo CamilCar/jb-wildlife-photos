@@ -11,11 +11,36 @@ body {
     margin: 0;
     padding: 0;
 }
+/* Hero images */
 
 .hero-image {
-    background: url("../../media/wildlife.squirrel.index.jpeg") no-repeat center center;
+    background: url("../../media/hero_images/wildlife.squirrel.index.jpeg") no-repeat center center;
     background-size: cover;
-    height: 73em;
+    height: 67em;
+}
+
+.contact-hero {
+    background: url("../../media/hero_images/wildlife.eagle.hero.jpg")no-repeat center center;
+}
+
+.pricing-hero {
+    background: url("../../media/hero_images/wildlife.fox.hero.jpg")no-repeat center center;
+}
+
+.about-hero {
+    background: url("../../media/hero_images/wildlife.bear.hero.jpg")no-repeat center center;
+}
+
+.webshop-hero {
+    background: url("../../media/hero_images/wildlife.musk_ox.hero.jpg")no-repeat center center;
+}
+
+.delivery-hero {
+    background: url("../../media/hero_images/wildlife.bear.hero.jpg")no-repeat center center;
+}
+.hero-image-sizing {
+    background-size: cover;
+    height: 46em;
 }
 
 h1 {
@@ -32,14 +57,14 @@ h5{
     font-style: normal;
 }
 
-.prints {
+#print-text {
     color: #e2ee79;
     font-weight: bold;
 }
 .hero-text {
     font-family: 'Aboreto', cursive;
-    margin-top: 37em;
-    margin-left: 6em;
+    margin-top: 34em;
+    margin-left: 4em;
     font-size: 1rem;
     display: inline-block;
     color: #f7f6f6;
