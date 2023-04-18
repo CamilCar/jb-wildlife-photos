@@ -186,7 +186,8 @@ input[type=text] {
 .page-title {
     font-family: 'Aboreto', cursive;
     color: #7a7a7a;
-    font-size: 3rem
+    font-size: 3rem;
+    margin-top: 1rem;
 }
 
 .page-wrapper {
@@ -201,12 +202,17 @@ input[type=text] {
     color: #e6e6e6;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
+    margin: 30px 0;
 }
 
 .page-text h1, h5 {
     color: #e6e6e6;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
+}
+
+.text-container {
+    margin: 0px 30rem;
 }
 
 .webshop-link {

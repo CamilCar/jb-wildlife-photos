@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="hero-image"  style="height: 46em;">
+        {% include 'includes/mobile-nav.html' %}
+        <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
+    </div>
+    <div class="page-wrapper">
+        <div id="line-3"></div>
+        <div class="page-title text-center">
+            <span>DELIVERY INFO</span>
+            <div id="line-2"></div>
+        </div>
+        <div class="page-text text-center">
+            <p class="page-p">
+                Shipping fee: Traceable 6.9€.
+                <br>
+                Free shipping for orders above 50€.
+                <br>
+                A confirmation email is sent to your inbox after a completed order.
+                <br>
+                Your order is sent within 3 workdays.
+                <br>
+                To place an order you need to sign up. If you already have an account, you can simply log in.
+                <br>
+                Buyers from Sweden can pay with Swish. Send me an email to place the order and pay with Swish.
+            </p>
+            <p class="page-p">Your privacy is important. Click here for our terms</p>
+        </div>
+        <a class="webshop-link" href="{% url 'webshop' %}"><i class="fa fa-arrow-left"style="color: #f0f2f5;"></i>Webshop</a>
+    </div>
+{% endblock %}
