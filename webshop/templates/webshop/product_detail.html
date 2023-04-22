@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="webshop-hero hero-image-sizing">
+        {% include 'includes/mobile-nav.html' %}
+        <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
+    </div>
+    <div id="line-3"></div>
+    <div class="page-wrapper">
+        <div class="page-title text-center">
+            <span>{{ print.name }}</span>
+            <div id="line-2"></div>
+        </div>
+        <div class="row webshop-gallery">
+            <div class="d-flex justify-content-center">
+                <div class="border border-5 border-dark">
+                    <img class="print-image" src="{{ print.image.url }}">
+                </div>
+            </div>
+            {% comment %} Code snippet from bootstrap {% endcomment %}
+        </div>
+        <div class="form-check">
+            <input class="form-check-input"
+                   type="radio"
+                   name="inlineRadioOptions"
+                   id="inlineRadio1"
+                   checked>
+            <label class="form-check-label" for="inlineRadio1">A4 |</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input"
+                   type="radio"
+                   name="inlineRadioOptions"
+                   id="inlineRadio2"
+                   value="option2">
+            <label class="form-check-label" for="inlineRadio2">A3 |</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input"
+                   type="radio"
+                   name="inlineRadioOptions"
+                   id="inlineRadio3"
+                   value="option3"
+                   value="option">
+            <label class="form-check-label" for="inlineRadio3">A3+ |</label>
+            <p>
+                <strong>Price:</strong>{{ print.price }}
+            </p>
+        </div>
+        <form method="post" action=".">
+            {% csrf_token %}
+            {{ add_print }}
+            <input type="submit"
+                   id="cart-btn"
+                   class="btn btn-success"
+                   value="Add to cart">
+        </form>
+    </div>
+{% endblock content %}
