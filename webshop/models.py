@@ -25,3 +25,42 @@ class Print(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CartItem(models.Model):
+    """
+    Adds cart item in db
+    """
+    print = models.ForeignKey(Print, on_delete=models.CASCADE, related_name='prints')
+    size = models.CharField(max_length=255)
+    amount = models.IntegerField(default=1)
+    price = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+
+    def __str__(self):
+        return self.print.name
+
+
+class Cart(models.Model):
+    """
+    Adds cart in db
+    """
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    prints = models.ManyToManyField(CartItem, blank=True)
+    date_ordered = models.DateField(auto_now_add=True)
+    completed = models.BooleanField(default=False)
+    session_key = models.CharField(max_length=40, null=True)
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def total_price(self):
+        prints = self.prints.all()
+        total = sum(print.price for print in prints)
+        return total
+
+    @property
+    def amount_of_prints(self):
+        prints = self.prints.all()
+        amount = sum(print.amount for print in prints)
+        return amount

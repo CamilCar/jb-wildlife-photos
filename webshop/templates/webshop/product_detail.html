@@ -17,43 +17,63 @@
                     <img class="print-image" src="{{ print.image.url }}">
                 </div>
             </div>
-            {% comment %} Code snippet from bootstrap {% endcomment %}
         </div>
-        <div class="form-check">
-            <input class="form-check-input"
-                   type="radio"
-                   name="inlineRadioOptions"
-                   id="inlineRadio1"
-                   checked>
-            <label class="form-check-label" for="inlineRadio1">A4 |</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input"
-                   type="radio"
-                   name="inlineRadioOptions"
-                   id="inlineRadio2"
-                   value="option2">
-            <label class="form-check-label" for="inlineRadio2">A3 |</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input"
-                   type="radio"
-                   name="inlineRadioOptions"
-                   id="inlineRadio3"
-                   value="option3"
-                   value="option">
-            <label class="form-check-label" for="inlineRadio3">A3+ |</label>
-            <p>
-                <strong>Price:</strong>{{ print.price }}
-            </p>
-        </div>
-        <form method="post" action=".">
+        <form method="post" action="{% url 'add_to_cart' %}">
             {% csrf_token %}
-            {{ add_print }}
+            {% comment %} Code snippet from bootstrap {% endcomment %}
+            <div class="form-check">
+                <input class="form-check-input"
+                       type="radio"
+                       name="size"
+                       id="inlineRadio1"
+                       value="a4"
+                       checked>
+                <label class="form-check-label" for="inlineRadio1">A4 |</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input"
+                       type="radio"
+                       name="size"
+                       id="inlineRadio2"
+                       value="a3">
+                <label class="form-check-label" for="inlineRadio2">A3 |</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input"
+                       type="radio"
+                       name="size"
+                       id="inlineRadio3"
+                       value="a3+">
+                <label class="form-check-label" for="inlineRadio3">A3+ |</label>
+                <input id="priceValueInput" type="hidden" name="price" value="" />
+                <input id="printId" type="hidden" name="print_id" value="{{ print.id }}" />
+                <p>
+                    <strong>Price:</strong>
+                </p>
+                <span id="priceValue"></span>
+            </div>
             <input type="submit"
                    id="cart-btn"
                    class="btn btn-success"
                    value="Add to cart">
         </form>
     </div>
+    <script>
+        const prices = {{prices | safe}};
+        const priceValueField = $("#priceValue");
+        const priceValueFieldInput = $("#priceValueInput");
+
+        priceValueField.html(prices['a4'])
+        priceValueFieldInput.val(prices['a4'])
+
+        const showPrice = (event) => {
+            const value = event.target.value;
+            
+            priceValueField.html(prices[value])
+            priceValueFieldInput.val(prices[value])
+        }
+
+        $('.form-check-input').click(showPrice)
+
+    </script>
 {% endblock content %}

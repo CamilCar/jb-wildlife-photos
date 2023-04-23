@@ -80,7 +80,7 @@ TEMPLATES = [
 ]
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 
 AUTHENTICATION_BACKENDS = [
 
