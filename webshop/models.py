@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -44,14 +45,14 @@ class Cart(models.Model):
     """
     Adds cart in db
     """
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     prints = models.ManyToManyField(CartItem, blank=True)
     date_ordered = models.DateField(auto_now_add=True)
     completed = models.BooleanField(default=False)
     session_key = models.CharField(max_length=40, null=True)
 
-    def __str__(self):
-        return self.name
+    def __int__(self):
+        return self.pk
 
     @property
     def total_price(self):
