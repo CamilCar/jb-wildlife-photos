@@ -28,17 +28,38 @@
         {% endfor %}
       </ul>
     </div>
-    <div id="webshop-gallery" class="row">
-      {% for print in prints %}
-        <div>
-          <a href="{% url 'product_detail' print.id %}">
-            <div class="">
-              <img src="{{ print.image.url }}">
-              <h5>{{ print.name }}</h5>
-            </div>
-          </a>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="webshop-gallery col-10 offset-1">
+          <div class="row mt-1 mb-2"></div>
+          <div class="row">
+            {% for print in prints %}
+              <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="card border-5 border-dark">
+                  <img class="print-image"
+                       src="{{ print.image.url }}"
+                       alt="{{ print.name }}">
+                  <h5 class="print-title text-center">{{ print.name }}</h5>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
         </div>
-      {% endfor %}
+      </div>
     </div>
-  </div>
-{% endblock content %}
+  {% endblock content %}
+  {% comment %} <div id="webshop-gallery" class="row">
+      {% for print in prints %}
+        <div class="container-fluid">
+          <div class="row webshop-gallery">
+            <div class="d-flex justify-content-center">
+              <div class="border border-5 border-dark">
+                <img class="print-image" src="{{ print.image.url }}">
+              </div>
+            </div>
+            <h5 class="text-center">{{ print.name }}</h5>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div> {% endcomment %}

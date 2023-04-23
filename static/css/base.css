@@ -43,8 +43,12 @@ body {
     height: 46em;
 }
 
-.print-image {
-    height: 80vh;
+.row>* {
+margin-bottom: 20px;
+}
+
+.card {
+    background:#7a7a7a;
 }
 
 .border-5 {
@@ -272,11 +276,11 @@ input[type=text] {
         height: 20em;
     }
 
-    .print-image {
+    /* .print-image {
         height: unset;
         width: 100vw;
         border: none;
-    }
+    } */
 
     .border-5 {
         border-width: 0!important;
@@ -310,6 +314,10 @@ input[type=text] {
 
     .page-title {
         font-size: 2rem;
+    }
+
+    .print-title {
+        padding: 10px;
     }
 
     .col- span {
