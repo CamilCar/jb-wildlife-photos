@@ -14,33 +14,37 @@ body {
 /* Hero images */
 
 .hero-image {
-    background: url("../../media/hero_images/wildlife.squirrel.index.jpeg") no-repeat center center;
+    background: url("/static/media/hero_images/wildlife.squirrel.index.jpeg") no-repeat center center;
     background-size: cover;
     height: 67em;
 }
 
 .contact-hero {
-    background: url("../../media/hero_images/wildlife.eagle.hero.jpg")no-repeat center center;
+    background: url("/static/media/hero_images/wildlife.eagle.hero.jpg")no-repeat center center;
 }
 
 .pricing-hero {
-    background: url("../../media/hero_images/wildlife.fox.hero.jpg")no-repeat center center;
+    background: url("/static/media/hero_images/wildlife.fox.hero.jpg")no-repeat center center;
 }
 
 .about-hero {
-    background: url("../../media/hero_images/wildlife.bear.hero.jpg")no-repeat center center;
+    background: url("/static/media/hero_images/wildlife.bear.hero.jpg")no-repeat center center;
 }
 
 .webshop-hero {
-    background: url("../../media/hero_images/wildlife.musk_ox.hero.jpg")no-repeat center center;
+    background: url("/static/media/hero_images/wildlife.musk_ox.hero.jpg")no-repeat center center;
 }
 
 .delivery-hero {
-    background: url("../../media/hero_images/wildlife.bear.hero.jpg")no-repeat center center;
+    background: url("/static/media/hero_images/wildlife.bear.hero.jpg")no-repeat center center;
 }
 .hero-image-sizing {
     background-size: cover;
     height: 46em;
+}
+
+.print-image {
+    height: 80vh;
 }
 
 .row>* {

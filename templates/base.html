@@ -40,11 +40,11 @@
     {% endblock content %}
     {% block newsletter %}
       <div class="newsletter-wrapper position-relative">
-        <img src="../../media/hero_images/dovrefjell.jpeg"
+        <img src="{% static 'media/hero_images/dovrefjell.jpeg' %}"
              class="d-block w-100"
              style="height:29rem;
                     object-fit: cover"
-             alt="...">
+             alt="Snowy mountains of Dovre, Norway">
         <div class="carousel-caption">
           <h1 class="text-center m-5 newsletter-header">Sign up for my newsletter</h1>
           <section class="text-center p-5 mt-4">

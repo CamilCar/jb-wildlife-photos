@@ -35,12 +35,13 @@
           <div class="row">
             {% for print in prints %}
               <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                <div class="card border-5 border-dark">
-                  <img class="print-image"
-                       src="{{ print.image.url }}"
-                       alt="{{ print.name }}">
-                  <h5 class="print-title text-center">{{ print.name }}</h5>
-                </div>
+                <a href="{% url 'product_detail' print.id %}"
+                   class="text-decoration-none">
+                  <div class="card border-5 border-dark">
+                    <img src="{{ print.image.url }}" alt="{{ print.name }}">
+                    <h5 class="print-title text-center">{{ print.name }}</h5>
+                  </div>
+                </a>
               </div>
             {% endfor %}
           </div>

@@ -94,4 +94,5 @@ An online webshop for wildlife prints from photographer Joris Bomert.
 
 ### Content
 - For mockup, 'moqups.com' was used. This page offered 400 objects for free, but for future I would concider purchase upgraded plan, as it's easy to use and learn, and offers great tools for project planning.
+- Code for styling  the prints in the webshop was based on code from CI project 'Boutique Ado' 
 - All photos used on this page is by photographer Joris Bomert, with his permission naturally, as it is a webstore for his products.
