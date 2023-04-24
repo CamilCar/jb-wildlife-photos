@@ -38,6 +38,12 @@ body {
 .delivery-hero {
     background: url("/static/media/hero_images/wildlife.bear.hero.jpg")no-repeat center center;
 }
+
+.error-img {
+    background: url("/static/media/hero_images/wildlife.bear.hero.jpg") no-repeat;
+    background-size: cover;
+}
+
 .hero-image-sizing {
     background-size: cover;
     height: 46em;
@@ -45,6 +51,22 @@ body {
 
 .print-image {
     height: 80vh;
+}
+
+.quote-img img{
+    width: 35vw;
+}
+
+.quote-p {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #606060;
+    margin-top: 2vh;
+    font-size: 1.1em;
+}
+
+.quote-p a {
+    text-decoration: none;
+    color: #444444;
 }
 
 .row>* {
@@ -280,11 +302,10 @@ input[type=text] {
         height: 20em;
     }
 
-    /* .print-image {
-        height: unset;
-        width: 100vw;
-        border: none;
-    } */
+    .quote-p {
+        
+        font-size: 0.9em;
+    }
 
     .border-5 {
         border-width: 0!important;
