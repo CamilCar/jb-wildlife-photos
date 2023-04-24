@@ -29,32 +29,22 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
-        <li class="nav-item dropdown">
-          <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Account
-            {% if user.is_authenticated %}
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item text-dark" href="#">My products</a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li>
-                  <a class="dropdown-item text-dark" href="#">Logout</a>
-                </li>
-              </ul>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Sign up</a>
-            </li>
-          {% endif %}
-        </a>
-      </ul>
-    </div>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="#">Log Out</a>
+          </li>
+        {% endif %}
+      </a>
+    </ul>
   </div>
+</div>
 </nav>
+<script>
+  const navLinks = document.getElementsByClassName("nav-link")
+    if ( "{{render_dark_navbar}}"  ) {
+        for (link of navLinks) {
+            link.classList.add("nav-dark-color")
+            
+        }
+    }
+</script>

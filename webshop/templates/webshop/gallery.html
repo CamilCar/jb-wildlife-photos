@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
   <div class="webshop-hero hero-image-sizing">
-    {% include 'includes/mobile-nav.html' %}
+    {% include 'includes/mobile-nav.html' with render_dark_navbar=True %}
     <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
   </div>
   <div id="line-3"></div>
@@ -49,18 +49,3 @@
       </div>
     </div>
   {% endblock content %}
-  {% comment %} <div id="webshop-gallery" class="row">
-      {% for print in prints %}
-        <div class="container-fluid">
-          <div class="row webshop-gallery">
-            <div class="d-flex justify-content-center">
-              <div class="border border-5 border-dark">
-                <img class="print-image" src="{{ print.image.url }}">
-              </div>
-            </div>
-            <h5 class="text-center">{{ print.name }}</h5>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-  </div> {% endcomment %}
