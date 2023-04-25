@@ -69,6 +69,19 @@ body {
     color: #444444;
 }
 
+.shopping-cart {
+    position: unset;
+}
+
+.cart-toggle-btn {
+    background-color: unset;
+    border: none;
+}
+
+.offcanvas {
+    background-color: #424242;
+}
+
 .row>* {
 margin-bottom: 20px;
 }
