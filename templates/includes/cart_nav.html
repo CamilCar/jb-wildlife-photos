@@ -1,3 +1,4 @@
+{% comment %} Code snippet from bootstrap {% endcomment %}
 <button class="cart-toggle-btn"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
@@ -16,15 +17,49 @@
                 aria-label="Close"></button>
     </div>
     <div class="offcanvas-body text-light">
-        <ol>
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-        </ol>
-        <p class="my-0">
-            {% if total_sum %}${{ total_sum|floatformat:2 }}{% endif %}
-        </p>
-        <a href="">
+        {% if cart_items %}
+            <div class="table-responsive">
+                <table class="table table-sm table-borderless">
+                    {% for item in cart_items %}
+                        <tr>
+                            <td class="p-3 w-25">
+                                {% if print_path %}
+                                    <img class="cart_print-image"
+                                         src="{{ print_path }}/{{ item.print.image }}"
+                                         alt="{{ item.print.name }}">
+                                {% else %}
+                                    <img class="cart_print-image"
+                                         src="../../media/{{ item.print.image }}"
+                                         alt="{{ item.print.name }}">
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="my-0">{{ item.quantity }}</span>
+                                <span class="my-0">{{ item.print.name }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="my-0">Size:</span>
+                                <span class="my-0">{{ item.size }}</span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% if free_delivery_calculator > 0 %}
+                        <p class="mb-1 text-danger">€{{ free_delivery_calculator }} until free shipping</p>
+                    {% else %}
+                        <p class="mb-1 text-success">Shipping: €0</p>
+                    {% endif %}
+                    <td colspan="5" class="pt-5 text-right">
+                        <h6>Cart total:</h6>
+                        €{{ total_sum|floatformat:2 }}
+                    </td>
+                </table>
+            </div>
+        {% endif %}
+        <a href="{% url 'checkout' %}">
             <button class="btn btn-success" type="button">
                 Continue to secure checkout
                 <i class="fa-solid fa-lock" style="color: #c88b09;"></i>
@@ -35,13 +70,3 @@
         </a>
     </div>
 </div>
-{% comment %} <li class="list-inline-item">
-    <a href="{% url 'view_cart' %}">
-        <div class="text-center">
-            <div class="shopping-cart">
-                <i class="fa-solid fa-cart-shopping fa-2xl" style="color: #e2ee79;"></i>
-            </div>
-            <p class="my-0">{% if total_sum %}${{ total_sum|floatformat:2 }}{% endif %}</p>
-        </div>
-    </a>
-</li> {% endcomment %}

@@ -3,6 +3,7 @@
 {% block content %}
     <div class="webshop-hero hero-image-sizing">
         {% include 'includes/mobile-nav.html' %}
+        <div class="shopping-cart">{% include 'includes/cart_nav.html' with print_path="../../../media" %}</div>
         <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
     </div>
     <div id="line-3"></div>
@@ -20,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <form method="post" action="{% url 'add_to_cart' %}">
+        <form method="POST" action="{% url 'add_to_cart' print.id %}">
             {% csrf_token %}
             {% comment %} Code snippet from bootstrap {% endcomment %}
             <div class="form-check">
@@ -55,14 +56,27 @@
                 </p>
                 <span id="priceValue"></span>
             </div>
+            <div class="print-amount">
+                <div class="form__group field">
+                    <input type="number"
+                           class="form__field"
+                           name="quantity"
+                           value="1"
+                           min="1"
+                           max="10"
+                           data-item-id="{{ print.id }}"
+                           id="id_qty_{{ print.id }}">
+                </div>
+            </div>
             <input type="submit"
                    id="cart-btn"
                    class="btn btn-success"
                    value="Add to cart">
+            <input type="hidden" name="redirect_url" value="{{ request.path }}">
         </form>
     </div>
     <script>
-        const prices = {{prices | safe}};
+        const prices = {{prices}};
         const priceValueField = $("#priceValue");
         const priceValueFieldInput = $("#priceValueInput");
 
