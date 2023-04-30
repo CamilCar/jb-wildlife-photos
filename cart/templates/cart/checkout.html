@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="webshop-hero hero-image-sizing">
+        {% include 'includes/mobile-nav.html' with render_dark_navbar=True %}
+        <div class="shopping-cart">{% include 'includes/cart_nav.html' %}</div>
+        <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
+    </div>
+    <div id="line-3"></div>
+    <div class="page-wrapper">
+        <div class="page-title text-center">
+            <span>CHECKOUT</span>
+            <div id="line-2"></div>
+        </div>
+        <div class="row p-5">
+            {% for item in cart_items %}
+                <div class="w-75 d-flex">
+                    <div class="row">
+                        <div class="col">
+                            <img class="cart_print-image"
+                                 src="../../{{ item.print.image.url }}"
+                                 alt="{{ item.print.name }}">
+                            <p>Size: {{ item.size }}</p>
+                        </div>
+                        <div class="col">{{ item.quantity }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="d-flex w-25 float-right">
+                <div>
+                    <p>{{ product_count }} products</p>
+                    <span>Delivery:</span>
+                    <span>
+                        {% if delivery > 0 %}
+                            €{{ delivery|floatformat:2 }}
+                        {% else %}
+                            free
+                        {% endif %}
+                    </span>
+                    <p>Total: €{{ total_sum|floatformat:2 }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="{% url 'checkout-continue' %}">
+                <button class="btn btn-secondary">continue</button>
+            </a>
+        </div>
+        <hr class="bg-secondary border-2 border-top border-secondary">
+        {{shipping_information}}
+    </div>
+{% endblock content %}

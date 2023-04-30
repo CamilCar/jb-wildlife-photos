@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
+from cart.forms import ConfirmBookingForm
 
 from webshop.models import PrintOption
 
@@ -34,3 +35,20 @@ def add_to_cart(request, print_id):
 
     request.session['cart'] = cart
     return redirect(redirect_url)
+
+
+def checkout(request):
+    return render(request, 'cart/checkout.html')
+
+
+def checkout_continue(request):
+    if request.user.is_authenticated:
+        shipping_information_form = ConfirmBookingForm()
+        return render(request, 'cart/checkout.html', {
+            'shipping_information': shipping_information_form
+        })
+    else:
+        # prompt to login
+        return render(request, 'cart/checkout.html', {
+            'login': True
+        })
