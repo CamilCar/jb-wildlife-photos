@@ -44,6 +44,25 @@ body {
     background-size: cover;
 }
 
+.swish-logo {
+    background: url("/static/media/hero_images/Swish Logo Primary Dark-BG.png") no-repeat;
+    background-size: contain;
+    height: 4em;
+    
+}
+
+.form__field {
+    
+    width: 4%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: white;
+    background: transparent;
+
+}
+  
 .hero-image-sizing {
     background-size: cover;
     height: 46em;
@@ -55,6 +74,10 @@ body {
 
 .quote-img img{
     width: 35vw;
+}
+
+.cart_print-image {
+    width: 15em;        
 }
 
 .quote-p {
@@ -70,7 +93,8 @@ body {
 }
 
 .shopping-cart {
-    position: unset;
+    position: absolute;
+    right: 5em;
 }
 
 .cart-toggle-btn {
@@ -314,6 +338,11 @@ input[type=text] {
 
     .hero-image-sizing {
         height: 20em;
+    }
+
+    .shopping-cart {
+        top: 1.5em;
+        right: 1.4em
     }
 
     .quote-p {
