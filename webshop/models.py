@@ -22,46 +22,28 @@ class Print(models.Model):
     """
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='print_images')
-    category = models.ForeignKey(Category, related_name='categories', on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='categories',
+                                 on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
 
-class CartItem(models.Model):
+class PrintOption(models.Model):
     """
-    Adds cart item in db
+    Creating sizes for prints data model
     """
-    print = models.ForeignKey(Print, on_delete=models.CASCADE, related_name='prints')
-    size = models.CharField(max_length=255)
-    amount = models.IntegerField(default=1)
+    a4 = 'a4'
+    a3 = 'a3'
+    a3plus = 'a3+'
+
+    SIZE_CHOICES = (
+        (a4, 'A4'),
+        (a3, 'A3'),
+        (a3plus, 'A3+'),
+    )
+    size = models.CharField(max_length=255, choices=SIZE_CHOICES, default=a4)
     price = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
 
     def __str__(self):
-        return self.print.name
-
-
-class Cart(models.Model):
-    """
-    Adds cart in db
-    """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    prints = models.ManyToManyField(CartItem, blank=True)
-    date_ordered = models.DateField(auto_now_add=True)
-    completed = models.BooleanField(default=False)
-    session_key = models.CharField(max_length=40, null=True)
-
-    def __int__(self):
-        return self.pk
-
-    @property
-    def total_price(self):
-        prints = self.prints.all()
-        total = sum(print.price for print in prints)
-        return total
-
-    @property
-    def amount_of_prints(self):
-        prints = self.prints.all()
-        amount = sum(print.amount for print in prints)
-        return amount
+        return self.size
