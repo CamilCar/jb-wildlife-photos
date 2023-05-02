@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-
+from django.core.serializers import serialize
 from .models import Category, Print, PrintOption
 
 # Create your views here.
@@ -23,8 +23,8 @@ def webshop(request):
 
 
 def product_detail(request, pk):
-    product = get_object_or_404(Print, pk=pk)
-    prices = PrintOption.objects.all()
+    product = get_object_or_404(Print, pk=pk)    
+    prices = serialize("json", PrintOption.objects.all())
 
     return render(request, 'webshop/product_detail.html', {
         'print': product,

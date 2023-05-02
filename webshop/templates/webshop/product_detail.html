@@ -76,18 +76,20 @@
         </form>
     </div>
     <script>
-        const prices = {{prices}};
-        const priceValueField = $("#priceValue");
+        const prices = {{prices|safe}}.map(obj => obj.fields)
+        const priceValueField = $("#priceValue")
         const priceValueFieldInput = $("#priceValueInput");
 
-        priceValueField.html(prices['a4'])
-        priceValueFieldInput.val(prices['a4'])
+        const getPrice = (valueToMatch) => prices.find(o => o.size === valueToMatch).price
+
+        priceValueField.html(getPrice('a4'))
+        priceValueFieldInput.val(getPrice('a4'))
 
         const showPrice = (event) => {
             const value = event.target.value;
             
-            priceValueField.html(prices[value])
-            priceValueFieldInput.val(prices[value])
+            priceValueField.html(getPrice(value))
+            priceValueFieldInput.val(getPrice(value))
         }
 
         $('.form-check-input').click(showPrice)
