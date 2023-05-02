@@ -1,4 +1,8 @@
 {% comment %} Code snippet from bootstrap {% endcomment %}
+{% if user.is_authenticated %}
+    <a href="{% url 'account_logout' %}"
+       class="text-decoration-none link-dark">Logout</a>
+{% endif %}
 <button class="cart-toggle-btn"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"

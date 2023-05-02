@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="contact-hero hero-image-sizing">
+        {% include 'includes/mobile-nav.html' %}
+        <div class="shopping-cart">{% include 'includes/cart_nav.html' %}</div>
+        <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
+    </div>
+    <div id="line-3"></div>
+    <div class="page-wrapper">
+        <div class="page-title text-center">
+            <div id="line-2"></div>
+        </div>
+        <div class="page-text text-center">
+            <h2>Thank you for your order!</h2>
+            <p>You will receive a confirmation email shortly.</p>
+        </div>
+    </div>
+{% endblock %}
