@@ -112,7 +112,7 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/cart/checkout'
-LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET = True
 
 
 WSGI_APPLICATION = 'jb_wildlife_photos.wsgi.application'
