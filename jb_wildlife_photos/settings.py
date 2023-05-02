@@ -44,15 +44,14 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'phonenumber_field',
     'home',
     'webshop',
     'cart',
     'orders',
-    'crispy_forms',
-    'crispy_bootstrap5',
 ]
-
 
 
 MIDDLEWARE = [
@@ -70,6 +69,8 @@ ROOT_URLCONF = 'jb_wildlife_photos.urls'
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 TEMPLATES = [
     {
@@ -109,6 +110,9 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/cart/checkout'
+LOGOUT_REDIRECT_URL = '/'
 
 
 WSGI_APPLICATION = 'jb_wildlife_photos.wsgi.application'

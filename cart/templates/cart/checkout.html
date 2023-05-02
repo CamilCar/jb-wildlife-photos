@@ -12,41 +12,63 @@
             <span>CHECKOUT</span>
             <div id="line-2"></div>
         </div>
-        <div class="row p-5">
-            {% for item in cart_items %}
-                <div class="w-75 d-flex">
-                    <div class="row">
-                        <div class="col">
-                            <img class="cart_print-image"
-                                 src="../../{{ item.print.image.url }}"
-                                 alt="{{ item.print.name }}">
-                            <p>Size: {{ item.size }}</p>
+        {% if cart_items %}
+            <div class="row p-5">
+                {% for item in cart_items %}
+                    <div class="w-75 d-flex">
+                        <div class="row">
+                            <div class="col">
+                                <img class="cart_print-image"
+                                     src="../../{{ item.print.image.url }}"
+                                     alt="{{ item.print.name }}">
+                                <p>Size: {{ item.size }}</p>
+                            </div>
+                            <div class="col">{{ item.quantity }}</div>
                         </div>
-                        <div class="col">{{ item.quantity }}</div>
+                    </div>
+                {% endfor %}
+                <div class="d-flex w-25 float-right">
+                    <div>
+                        <p>{{ product_count }} products</p>
+                        <span>Delivery:</span>
+                        <span>
+                            {% if delivery > 0 %}
+                                €{{ delivery|floatformat:2 }}
+                            {% else %}
+                                free
+                            {% endif %}
+                        </span>
+                        <p>Total: €{{ total_sum|floatformat:2 }}</p>
                     </div>
                 </div>
-            {% endfor %}
-            <div class="d-flex w-25 float-right">
-                <div>
-                    <p>{{ product_count }} products</p>
-                    <span>Delivery:</span>
-                    <span>
-                        {% if delivery > 0 %}
-                            €{{ delivery|floatformat:2 }}
-                        {% else %}
-                            free
-                        {% endif %}
-                    </span>
-                    <p>Total: €{{ total_sum|floatformat:2 }}</p>
-                </div>
             </div>
-        </div>
-        <div class="text-center">
-            <a href="{% url 'checkout-continue' %}">
-                <button class="btn btn-secondary">continue</button>
-            </a>
-        </div>
-        <hr class="bg-secondary border-2 border-top border-secondary">
-        {{shipping_information}}
+            <div class="text-center">
+                {% if is_authenticated %}
+                    <button id="continue-checkout-shipping" class="btn btn-secondary">continue</button>
+                {% else %}
+                    <a href="{% url 'account_signup' %}">
+                        <button class="btn btn-secondary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">continue</button>
+                    </a>
+                {% endif %}
+            </div>
+            <hr class="bg-secondary border-2 border-top border-secondary">
+            <div id="shipping-information-form" class="w-50 center mx-auto">
+                <form method="POST" action="{% url 'create_order' %}">
+                    {% csrf_token %}
+                    {{ shipping_information }}
+                    <button type="submit">Confirm order</button>
+                </form>
+            </div>
+        {% else %}
+            <p>Your cart is empty</p>
+        {% endif %}
     </div>
+    <script>
+        $('#shipping-information-form').hide()
+        $('#continue-checkout-shipping').on('click', () => {
+            $('#shipping-information-form').show()
+        })
+    </script>
 {% endblock content %}

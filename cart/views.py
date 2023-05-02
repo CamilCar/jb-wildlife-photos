@@ -38,17 +38,9 @@ def add_to_cart(request, print_id):
 
 
 def checkout(request):
-    return render(request, 'cart/checkout.html')
+    shipping_information_form = ConfirmBookingForm()
 
-
-def checkout_continue(request):
-    if request.user.is_authenticated:
-        shipping_information_form = ConfirmBookingForm()
-        return render(request, 'cart/checkout.html', {
-            'shipping_information': shipping_information_form
-        })
-    else:
-        # prompt to login
-        return render(request, 'cart/checkout.html', {
-            'login': True
-        })
+    return render(request, 'cart/checkout.html', {
+        'is_authenticated': request.user.is_authenticated,
+        'shipping_information': shipping_information_form
+    })
