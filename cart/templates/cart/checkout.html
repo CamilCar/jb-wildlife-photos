@@ -15,19 +15,19 @@
         {% if cart_items %}
             <div class="row p-5">
                 {% for item in cart_items %}
-                    <div class="w-75 d-flex">
+                    <div class="w-75 d-flex text-light">
                         <div class="row">
                             <div class="col">
                                 <img class="cart_print-image"
                                      src="../../{{ item.print.image.url }}"
                                      alt="{{ item.print.name }}">
+                                <div class="col">x{{ item.quantity }}</div>
                                 <p>Size: {{ item.size }}</p>
                             </div>
-                            <div class="col">{{ item.quantity }}</div>
                         </div>
                     </div>
                 {% endfor %}
-                <div class="d-flex w-25 float-right">
+                <div class="d-flex w-50 float-right text-light">
                     <div>
                         <p>{{ product_count }} products</p>
                         <span>Delivery:</span>
@@ -54,11 +54,11 @@
                 {% endif %}
             </div>
             <hr class="bg-secondary border-2 border-top border-secondary">
-            <div id="shipping-information-form" class="w-50 center mx-auto">
+            <div id="shipping-information-form" class="w-50 center mx-auto text-light">
                 <form method="POST" action="{% url 'create_order' %}">
                     {% csrf_token %}
                     {{ shipping_information }}
-                    <button type="submit">Confirm order</button>
+                    <button class="btn btn-success" type="submit">Confirm order</button>
                 </form>
             </div>
         {% else %}

@@ -40,24 +40,24 @@
                         </tr>
                         <tr>
                             <td>
-                                <span class="my-0">{{ item.quantity }}</span>
-                                <span class="my-0">{{ item.print.name }}</span>
+                                <span class="my-0 text-light">{{ item.quantity }}</span>
+                                <span class="my-0 text-light">{{ item.print.name }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <span class="my-0">Size:</span>
-                                <span class="my-0">{{ item.size }}</span>
+                                <span class="my-0 text-light">Size:</span>
+                                <span class="my-0 text-light">{{ item.size }}</span>
                             </td>
                         </tr>
                     {% endfor %}
-                    {% if free_delivery_calculator > 0 %}
-                        <p class="mb-1 text-danger">€{{ free_delivery_calculator }} until free shipping</p>
-                    {% else %}
-                        <p class="mb-1 text-success">Shipping: €0</p>
-                    {% endif %}
-                    <td colspan="5" class="pt-5 text-right">
-                        <h6>Cart total:</h6>
+                    <td colspan="5" class="pt-5 text-right text-light">
+                        <h6 text-light>Cart total:</h6>
+                        {% if free_delivery_calculator > 0 %}
+                            <p class="mb-1 text-danger">€{{ free_delivery_calculator }} until free shipping</p>
+                        {% else %}
+                            <p class="mb-1 text-success">Shipping: €0</p>
+                        {% endif %}
                         €{{ total_sum|floatformat:2 }}
                     </td>
                 </table>
