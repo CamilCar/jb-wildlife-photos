@@ -11,10 +11,7 @@ from webshop.models import PrintOption
 
 @login_required
 def create_order(request):
-
-    print(request.POST)
     shipping_information_form = ConfirmBookingForm(request.POST)
-    print(shipping_information_form)
 
     if shipping_information_form.is_valid():
         new_shipping_information = shipping_information_form.save()
