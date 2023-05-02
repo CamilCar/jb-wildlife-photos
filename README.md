@@ -88,6 +88,10 @@ An online webshop for wildlife prints from photographer Joris Bomert.
     - Connect repository from GitHub
     - Choose main branch, then Deploy Branch
 
+## Facebook
+---------------
+![Facebook page](media/fb.page.jpg)
+
 
 ## Credits
 ---------------

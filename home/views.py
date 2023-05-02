@@ -27,6 +27,12 @@ def delivery(request):
     return render(request, 'delivery_info/delivery.html')
 
 
+def policy(request):
+    """ Returns policy info page """
+
+    return render(request, 'delivery_info/policy.html')
+
+
 def pricing(request):
     """ Returns prices page """
 
