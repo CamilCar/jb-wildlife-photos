@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+
 from pathlib import Path
+import cloudinary_storage
 import os
 import dj_database_url
 if os.path.isfile("env.py"):
@@ -27,7 +29,7 @@ TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['jbwildlifephotos.herokuapp.com', 'localhost']
 
@@ -60,6 +62,7 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/cart/checkout'
 ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -181,9 +184,17 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'darav9s8b',
+    'API_KEY': '146294799196251',
+    'API_SECRET': 'uFA3GOCzKo_hbWhPZe5s6RVFvSI',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
