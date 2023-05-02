@@ -26,5 +26,8 @@
    "editor.defaultFormatter": "HookyQR.beautify",
    "[django-html]": {
       "editor.defaultFormatter": "monosans.djlint"
+   },
+   "[python]": {
+      "editor.defaultFormatter": "ms-python.autopep8"
    }
 }

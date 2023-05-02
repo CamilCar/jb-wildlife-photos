@@ -3,7 +3,7 @@
 {% load account socialaccount %}
 {% block head_title %}
   {% trans "Sign In" %}
-{% endblock %}
+{% endblock head_title %}
 {% block inner_content %}
   <hr>
   <h2 class="logo-font mb-4">{% trans "Sign In" %}</h2>
@@ -43,4 +43,4 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}
          href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
     </p>
   </form>
-{% endblock %}
+{% endblock inner_content %}

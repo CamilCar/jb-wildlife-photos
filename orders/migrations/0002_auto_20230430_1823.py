@@ -15,10 +15,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ShippingInformation',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
                 ('email', models.CharField(max_length=255)),
-                ('phone', phonenumber_field.modelfields.PhoneNumberField(max_length=128, region='SE')),
+                ('phone', phonenumber_field.modelfields.PhoneNumberField(
+                    max_length=128, region='SE')),
                 ('address', models.CharField(max_length=255)),
                 ('postal_code', models.CharField(max_length=255)),
                 ('city', models.CharField(max_length=255)),
@@ -27,7 +29,10 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='order',
             name='shipping_information',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, related_name='shipping_information', to='orders.shippinginformation'),
+            field=models.ForeignKey(default=None,
+                                    on_delete=django.db.models.deletion.CASCADE,
+                                    related_name='shipping_information',
+                                    to='orders.shippinginformation'),
             preserve_default=False,
         ),
     ]

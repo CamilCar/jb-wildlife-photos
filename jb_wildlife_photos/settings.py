@@ -129,7 +129,7 @@ WSGI_APPLICATION = 'jb_wildlife_photos.wsgi.application'
 #  }
 
 DATABASES = {
-   'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 

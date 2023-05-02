@@ -22,7 +22,7 @@ def cart_content(request):
         print_option = get_object_or_404(PrintOption, size=chosen_size)
 
         total += int(print_option.price) * int(quantity)
-        
+
         product_count += int(quantity)
 
         cart_items.append({

@@ -23,7 +23,7 @@ def webshop(request):
 
 
 def product_detail(request, pk):
-    product = get_object_or_404(Print, pk=pk)    
+    product = get_object_or_404(Print, pk=pk)
     prices = serialize("json", PrintOption.objects.all())
 
     return render(request, 'webshop/product_detail.html', {
