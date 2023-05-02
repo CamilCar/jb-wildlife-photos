@@ -17,6 +17,7 @@ if os.path.isfile("env.py"):
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -53,6 +54,10 @@ INSTALLED_APPS = [
     'orders',
 ]
 
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/cart/checkout'
+ACCOUNT_LOGOUT_ON_GET = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -97,7 +102,7 @@ TEMPLATES = [
 ]
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
+
 
 AUTHENTICATION_BACKENDS = [
 
@@ -108,12 +113,6 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 
 ]
-
-SITE_ID = 1
-
-LOGIN_REDIRECT_URL = '/cart/checkout'
-ACCOUNT_LOGOUT_ON_GET = True
-
 
 WSGI_APPLICATION = 'jb_wildlife_photos.wsgi.application'
 
