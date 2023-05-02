@@ -1,1 +1,1 @@
-web: gunicorn jb_wildlife_photos.wsgi
+web: gunicorn jb_wildlife_photos.wsgi:application
