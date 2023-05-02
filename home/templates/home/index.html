@@ -32,29 +32,27 @@
               <a class="nav-link" href="{% url 'about' %}">About</a>
             </li>
             <li class="nav-item dropdown">
-              <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Account
-                {% if user.is_authenticated %}
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item text-dark" href="#">My products</a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                      <a class="dropdown-item text-dark" href="#">Logout</a>
-                    </li>
-                  </ul>
-                {% else %}
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Login</a>
+              <a role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+              {% if user.is_authenticated %}
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item text-dark" href="#">My products</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Sign</a>
+                  <li>
+                    <hr class="dropdown-divider">
                   </li>
-                {% endif %}
-              </a>
+                  <li>
+                    <a class="dropdown-item text-dark" href="#">Logout</a>
+                  </li>
+                </ul>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Sign</a>
+                </li>
+              {% endif %}
             </li>
           </ul>
         </div>
