@@ -3,7 +3,7 @@
 {% block content %}
     <div class="webshop-hero hero-image-sizing">
         {% include 'includes/mobile-nav.html' %}
-        <div class="shopping-cart">{% include 'includes/cart_nav.html' with print_path="../../../media" %}</div>
+        <div class="shopping-cart">{% include 'includes/cart_nav.html' %}</div>
         <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
     </div>
     <div id="line-3"></div>
@@ -16,7 +16,7 @@
             <div class="d-flex justify-content-center">
                 <div class="border border-5 border-dark">
                     <img class="print-image"
-                         src="{{ print.image.url }}"
+                         src="{% static 'media/'|add:print.image.name %}"
                          alt="{{ print.name }}">
                 </div>
             </div>

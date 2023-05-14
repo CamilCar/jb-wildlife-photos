@@ -5,7 +5,8 @@
     <title>JB Wildlife Photos</title>
     {% block meta %}
       <meta name="description" content="Webshop for wildlife prints">
-      <meta name="keywords" content="Wildlife, wildlife in sweden, wildlife prints.">
+      <meta name="keywords"
+            content="Wildlife, wildlife in sweden, wildlife prints.">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <meta charset="utf-8">
       <meta name="viewport"
@@ -20,8 +21,10 @@
             crossorigin="anonymous">
       <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Actor&family=Roboto&family=Source+Sans+Pro:wght@400;600&display=swap"
             rel="stylesheet">
-      <link rel="stylesheet" href="{% static '/css/base.css' %}">
-      <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/darav9s8b/image/upload/v1683018677/static/media/logo.jpg">
+      <link rel="stylesheet" href="{% static 'css/base.css' %}">
+      <link rel="icon"
+            type="image/x-icon"
+            href="https://res.cloudinary.com/darav9s8b/image/upload/v1683018677/static/media/logo.jpg">
     {% endblock corecss %}
     {% block extra_css %}
     {% endblock extra_css %}
@@ -37,12 +40,10 @@
     {% endblock corejs %}
     {% block extra_js %}
     {% endblock extra_js %}
-    
   </head>
   <body>
-    
     {% block content %}
-    <div class="swish-logo"></div>
+      <div class="swish-logo"></div>
     {% endblock content %}
     {% block newsletter %}
       <div class="newsletter-wrapper position-relative">
@@ -102,7 +103,6 @@
                 <i class="fas fa-envelope me-3 text-secondary"></i>
                 jbphotos@gmail.com
               </p>
-              
             </div>
           </section>
           <ul class="nav justify-content-center bottom-nav">

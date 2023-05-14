@@ -39,7 +39,8 @@
                 <a href="{% url 'product_detail' print.id %}"
                    class="text-decoration-none">
                   <div class="card border-5 border-dark">
-                    <img src="{{ print.image.url }}" alt="{{ print.name }}">
+                    <img src="{% static 'media/'|add:print.image.name %}"
+                         alt="{{ print.name }}">
                     <h5 class="print-title text-center">{{ print.name }}</h5>
                   </div>
                 </a>

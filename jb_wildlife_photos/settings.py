@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['jbwildlifephotos.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['jbwildlifephotos.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -186,7 +186,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
 
 # Default primary key field type

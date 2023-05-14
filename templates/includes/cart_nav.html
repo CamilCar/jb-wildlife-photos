@@ -1,3 +1,4 @@
+{% load static %}
 {% comment %} Code snippet from bootstrap {% endcomment %}
 {% if user.is_authenticated %}
     <a href="{% url 'account_logout' %}"
@@ -27,15 +28,9 @@
                     {% for item in cart_items %}
                         <tr>
                             <td class="p-3 w-25">
-                                {% if print_path %}
-                                    <img class="cart_print-image"
-                                         src="{{ print_path }}/{{ item.print.image }}"
-                                         alt="{{ item.print.name }}">
-                                {% else %}
-                                    <img class="cart_print-image"
-                                         src="../../media/{{ item.print.image }}"
-                                         alt="{{ item.print.name }}">
-                                {% endif %}
+                                <img class="cart_print-image"
+                                     src="{% static 'media/print_images/item.print.image' %}"
+                                     alt="{{ item.print.name }}">
                             </td>
                         </tr>
                         <tr>
