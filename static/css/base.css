@@ -14,7 +14,7 @@ body {
 /* Hero images and styling */
 
 .hero-image {
-    background: url("/static/media/hero_images/wildlife.squirrel.index.jpeg") no-repeat center center;
+    background: url("https://res.cloudinary.com/darav9s8b/image/upload/v1/static/media/hero_images/wildlife.squirrel.index.5f64fd11348d.jpeg") no-repeat center center;
     background-size: cover;
     height: 67em;
 }
