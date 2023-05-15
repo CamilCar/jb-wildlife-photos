@@ -37,6 +37,54 @@ def add_to_cart(request, print_id):
     return redirect(redirect_url)
 
 
+def delete_from_cart(request, print_id, print_size):
+    cart = request.session.get('cart', {})
+    print_option = get_object_or_404(PrintOption, size=print_size)
+    print_size_id = print_option.id
+
+    print_key = f"{print_id}{print_size_id}"
+
+    if print_key in list(cart.keys()):
+        del cart[print_key]
+
+    request.session['cart'] = cart
+
+    return redirect(request.META['HTTP_REFERER'])
+
+
+def plus_print_to_cart(request, print_id, print_size):
+    cart = request.session.get('cart', {})
+    print_option = get_object_or_404(PrintOption, size=print_size)
+    print_size_id = print_option.id
+
+    print_key = f"{print_id}{print_size_id}"
+
+    if print_key in list(cart.keys()):
+        cart[print_key]['quantity'] += 1
+
+    request.session['cart'] = cart
+
+    return redirect(request.META['HTTP_REFERER'])
+
+
+def minus_print_from_cart(request, print_id, print_size):
+    cart = request.session.get('cart', {})
+    print_option = get_object_or_404(PrintOption, size=print_size)
+    print_size_id = print_option.id
+
+    print_key = f"{print_id}{print_size_id}"
+
+    if print_key in list(cart.keys()):
+        if cart[print_key]['quantity'] <= 1:
+            del cart[print_key]
+        else:
+            cart[print_key]['quantity'] -= 1
+
+    request.session['cart'] = cart
+
+    return redirect(request.META['HTTP_REFERER'])
+
+
 def checkout(request):
     shipping_information_form = ConfirmBookingForm()
 

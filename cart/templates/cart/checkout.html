@@ -19,8 +19,8 @@
                         <div class="row">
                             <div class="col">
                                 <img class="cart_print-image"
-                                     src="{% static 'media/print_images/'{{ item.print.image.url }} %}"
-                                     alt="{{ item.print.name }}">
+                                    src="{% static 'media/'|add:item.print.image.name %}"
+                                    alt="{{ item.print.name }}">
                                 <div class="col">x{{ item.quantity }}</div>
                                 <p>Size: {{ item.size }}</p>
                             </div>

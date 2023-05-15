@@ -29,7 +29,7 @@
                         <tr>
                             <td class="p-3 w-25">
                                 <img class="cart_print-image"
-                                     src="{% static 'media/print_images/item.print.image' %}"
+                                     src="{% static 'media/'|add:item.print.image.name %}"
                                      alt="{{ item.print.name }}">
                             </td>
                         </tr>
@@ -43,6 +43,22 @@
                             <td>
                                 <span class="my-0 text-light">Size:</span>
                                 <span class="my-0 text-light">{{ item.size }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="{% url 'minus_print_from_cart' item.print.id item.size %}">
+                                    <i class="fa-solid fa-minus"></i></td>
+                                </a>
+                            <td>
+                                <a href="{% url 'plus_print_to_cart' item.print.id item.size %}">
+                                    <i class="fa-solid fa-plus"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'delete_from_cart' item.print.id item.size %}">
+                                    <i class="fa-solid fa-trash-can" style="color: #ff0000;"></i>
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}
