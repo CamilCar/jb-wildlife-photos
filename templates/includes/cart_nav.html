@@ -1,87 +1,86 @@
 {% load static %}
 {% comment %} Code snippet from bootstrap {% endcomment %}
-{% if user.is_authenticated %}
-    <a href="{% url 'account_logout' %}"
-       class="text-decoration-none link-dark">Logout</a>
-{% endif %}
-<button class="cart-toggle-btn"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight">
-    <i class="fa-solid fa-cart-shopping fa-2xl" style="color: #e2ee79;"></i>
-</button>
-<div class="offcanvas offcanvas-end"
-     tabindex="-1"
-     id="offcanvasRight"
-     aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title text-light" id="offcanvasRightLabel">Your shopping cart</h5>
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body text-light">
-        {% if cart_items %}
-            <div class="table-responsive">
-                <table class="table table-sm table-borderless">
-                    {% for item in cart_items %}
-                        <tr>
-                            <td class="p-3 w-25">
-                                <img class="cart_print-image"
-                                     src="{% static 'media/'|add:item.print.image.name %}"
-                                     alt="{{ item.print.name }}">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="my-0 text-light">{{ item.quantity }}</span>
-                                <span class="my-0 text-light">{{ item.print.name }}</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="my-0 text-light">Size:</span>
-                                <span class="my-0 text-light">{{ item.size }}</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="{% url 'minus_print_from_cart' item.print.id item.size %}">
-                                    <i class="fa-solid fa-minus"></i></td>
-                                </a>
-                            <td>
-                                <a href="{% url 'plus_print_to_cart' item.print.id item.size %}">
-                                    <i class="fa-solid fa-plus"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{% url 'delete_from_cart' item.print.id item.size %}">
-                                    <i class="fa-solid fa-trash-can" style="color: #ff0000;"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    <td colspan="5" class="pt-5 text-right text-light">
-                        <h6 text-light>Cart total:</h6>
-                        {% if free_delivery_calculator > 0 %}
-                            <p class="mb-1 text-danger">€{{ free_delivery_calculator }} until free shipping</p>
-                        {% else %}
-                            <p class="mb-1 text-success">Shipping: €0</p>
-                        {% endif %}
-                        €{{ total_sum|floatformat:2 }}
-                    </td>
-                </table>
+{% if cart_items %}
+    <div class="z-3">
+        <button class="cart-toggle-btn"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight">
+            <i class="fa-solid fa-cart-shopping fa-2xl" style="color: #212529;"></i>
+        </button>
+        <div class="offcanvas offcanvas-end"
+             tabindex="-1"
+             id="offcanvasRight"
+             aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title text-light" id="offcanvasRightLabel">Your shopping cart</h5>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
             </div>
-        {% endif %}
-        <a href="{% url 'checkout' %}">
-            <button class="btn btn-success" type="button">
-                Continue to secure checkout
-                <i class="fa-solid fa-lock" style="color: #c88b09;"></i>
-                <p class="my-0">
-                    {% if total_sum %}${{ total_sum|floatformat:2 }}{% endif %}
-                </p>
-            </button>
-        </a>
+            <div class="offcanvas-body text-light">
+                <div class="table-responsive">
+                    <table class="table table-sm table-borderless">
+                        {% for item in cart_items %}
+                            <tr>
+                                <td class="p-3 w-25">
+                                    <img class="cart_print-image"
+                                         src="{% static 'media/'|add:item.print.image.name %}"
+                                         alt="{{ item.print.name }}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="my-0 text-light">{{ item.quantity }}</span>
+                                    <span class="my-0 text-light">{{ item.print.name }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="my-0 text-light">Size:</span>
+                                    <span class="my-0 text-light">{{ item.size }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="{% url 'minus_print_from_cart' item.print.id item.size %}">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </td>
+                                </a>
+                                <td>
+                                    <a href="{% url 'plus_print_to_cart' item.print.id item.size %}">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'delete_from_cart' item.print.id item.size %}">
+                                        <i class="fa-solid fa-trash-can" style="color: #ff0000;"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <td colspan="5" class="pt-5 text-right text-light">
+                            <h6 text-light>Cart total:</h6>
+                            {% if free_delivery_calculator > 0 %}
+                                <p class="mb-1 text-danger">€{{ free_delivery_calculator }} until free shipping</p>
+                            {% else %}
+                                <p class="mb-1 text-success">Shipping: €0</p>
+                            {% endif %}
+                            €{{ total_sum|floatformat:2 }}
+                        </td>
+                    </table>
+                </div>
+                <button class="btn btn-success" type="button">
+                    <a href="{% url 'checkout' %}" class="text-light text-decoration-none">
+                        Continue to secure checkout
+                        <i class="fa-solid fa-lock" style="color: #c88b09;"></i>
+                        <span class="my-0">
+                            {% if total_sum %}${{ total_sum|floatformat:2 }}{% endif %}
+                        </span>
+                    </a>
+                </button>
+            </div>
+        </div>
     </div>
-</div>
+{% endif %}

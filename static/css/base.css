@@ -89,7 +89,8 @@ body {
     font-size: 1.1em;
 }
 
-.quote-p a {
+.quote-p a,
+.canon-link a {
     text-decoration: none;
     color: #444444;
 }
@@ -123,6 +124,11 @@ h2 {
 h5{
     color: #aaaaaa;
     font-style: normal;
+}
+
+.policy-text {
+    text-align: center;
+    font-size: 3rem;
 }
 
 #print-text {
@@ -185,13 +191,14 @@ h3 {
 }
 
 .shopping-cart {
-    position: absolute;
+    position: fixed;
     right: 5em;
 }
 
 .cart-toggle-btn {
     background-color: unset;
     border: none;
+    
 }
 /* End nav element styling */
 
@@ -343,7 +350,8 @@ input[type=text] {
 
     .shopping-cart {
         top: 1.5em;
-        right: 1.4em
+        right: 1.4em;
+        position: fixed;
     }
 
     .quote-p {
