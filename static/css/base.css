@@ -20,32 +20,32 @@ body {
 }
 
 .contact-hero {
-    background: url("/static/media/hero_images/wildlife.eagle.hero.jpg")no-repeat center center;
+    background: url("https://res.cloudinary.com/darav9s8b/image/upload/v1684315868/static/media/hero_images/wildlife.eagle.hero.5cf99ab458d7.jpg")no-repeat center center;
 }
 
 .pricing-hero {
-    background: url("/static/media/hero_images/wildlife.fox.hero.jpg")no-repeat center center;
+    background: url("https://res.cloudinary.com/darav9s8b/image/upload/v1684315869/static/media/hero_images/wildlife.fox.hero.4c9ac082a625.jpg")no-repeat center center;
 }
 
 .about-hero {
-    background: url("/static/media/hero_images/wildlife.bear.hero.jpg")no-repeat center center;
+    background: url("https://res.cloudinary.com/darav9s8b/image/upload/v1684315867/static/media/hero_images/wildlife.bear.hero.060c358c1af5.jpg")no-repeat center center;
 }
 
 .webshop-hero {
-    background: url("/static/media/hero_images/wildlife.musk_ox.hero.jpg")no-repeat center center;
+    background: url("https://res.cloudinary.com/darav9s8b/image/upload/v1684315883/static/media/print_images/wildlife.prints.musk.oxen.be03369ef94a.jpg")no-repeat center center;
 }
 
 .delivery-hero {
-    background: url("/static/media/hero_images/wildlife.bear.hero.jpg")no-repeat center center;
+    background: url("https://res.cloudinary.com/darav9s8b/image/upload/v1684315867/static/media/hero_images/wildlife.bear.hero.060c358c1af5.jpg")no-repeat center center;
 }
 
 .error-img {
-    background: url("/static/media/hero_images/wildlife.bear.hero.jpg") no-repeat;
+    background: url("https://res.cloudinary.com/darav9s8b/image/upload/v1684315867/static/media/hero_images/wildlife.bear.hero.060c358c1af5.jpg") no-repeat;
     background-size: cover;
 }
 
 .swish-logo {
-    background: url("/static/media/hero_images/Swish Logo Primary Dark-BG.png") no-repeat;
+    background: url("https://res.cloudinary.com/darav9s8b/image/upload/v1684315865/static/media/hero_images/Swish%20Logo%20Primary%20Dark-BG.471595bb39bd.png") no-repeat;
     background-size: contain;
     height: 4em;
     
