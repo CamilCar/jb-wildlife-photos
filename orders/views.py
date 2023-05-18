@@ -14,14 +14,18 @@ def create_order(request):
     shipping_information_form = ConfirmBookingForm(request.POST)
 
     if shipping_information_form.is_valid():
+        # Saving shipping information
         new_shipping_information = shipping_information_form.save()
-        cart = cart_content(request)
 
+        cart = cart_content(request)
         user = request.user
+
+        # Saving order
         new_order = Order(user=user,
                           shipping_information=new_shipping_information)
         new_order.save()
 
+        # Saving cart item for each print in cart
         for item in cart['cart_items']:
             print_option = get_object_or_404(PrintOption, size=item['size'])
             new_cart_item = OrderItem(print=item['print'],
@@ -30,6 +34,9 @@ def create_order(request):
                                       )
             new_cart_item.save()
             new_order.prints.add(new_cart_item)
+
+        # Empty cart
+        del request.session['cart']
 
         return render(request, 'orders/thanks_for_order.html')
     return redirect(request.META['HTTP_REFERER'])

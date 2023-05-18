@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from cart.forms import ConfirmBookingForm
+from django.http import HttpResponseRedirect
 
 from webshop.models import PrintOption
 
@@ -49,7 +50,7 @@ def delete_from_cart(request, print_id, print_size):
 
     request.session['cart'] = cart
 
-    return redirect(request.META['HTTP_REFERER'])
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def plus_print_to_cart(request, print_id, print_size):
@@ -64,7 +65,7 @@ def plus_print_to_cart(request, print_id, print_size):
 
     request.session['cart'] = cart
 
-    return redirect(request.META['HTTP_REFERER'])
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def minus_print_from_cart(request, print_id, print_size):
@@ -82,7 +83,7 @@ def minus_print_from_cart(request, print_id, print_size):
 
     request.session['cart'] = cart
 
-    return redirect(request.META['HTTP_REFERER'])
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def checkout(request):

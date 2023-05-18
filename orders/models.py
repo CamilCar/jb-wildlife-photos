@@ -17,6 +17,7 @@ class OrderItem(models.Model):
     print_option = models.ForeignKey(PrintOption, on_delete=models.CASCADE,
                                      related_name='print_options')
 
+
     def __str__(self):
         return f"{self.print.name} - id: {self.pk}"
 
@@ -33,7 +34,7 @@ class ShippingInformation(models.Model):
     city = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.address} {self.postal_code} {self.city}"
+        return f"{self.address} {self.postal_code} {self.city} - id: {self.pk}"
 
 
 class Order(models.Model):
@@ -64,4 +65,4 @@ class Order(models.Model):
         return total
 
     def __str__(self):
-        return f"{self.user.get_full_name()} - {str(self.pk)}"
+        return f"{self.user.username} - {str(self.pk)}"

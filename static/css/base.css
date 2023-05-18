@@ -52,8 +52,6 @@ body {
 }
 
 .form__field {
-    
-    width: 4%;
     border: 0;
     border-bottom: 2px solid gray;
     outline: 0;

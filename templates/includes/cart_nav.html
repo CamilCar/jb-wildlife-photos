@@ -1,7 +1,7 @@
 {% load static %}
 {% comment %} Code snippet from bootstrap {% endcomment %}
 {% if cart_items %}
-    <div class="z-3">
+    <div>
         <button class="cart-toggle-btn"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight"
@@ -15,7 +15,7 @@
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title text-light" id="offcanvasRightLabel">Your shopping cart</h5>
                 <button type="button"
-                        class="btn-close"
+                        class="btn-close btn-close-white"
                         data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
             </div>
@@ -32,7 +32,6 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <span class="my-0 text-light">{{ item.quantity }}</span>
                                     <span class="my-0 text-light">{{ item.print.name }}</span>
                                 </td>
                             </tr>
@@ -43,11 +42,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td> 
                                     <a href="{% url 'minus_print_from_cart' item.print.id item.size %}">
                                         <i class="fa-solid fa-minus"></i>
-                                    </td>
-                                </a>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span class="my-0 text-light">{{ item.quantity }}</span>
+                                </td>
                                 <td>
                                     <a href="{% url 'plus_print_to_cart' item.print.id item.size %}">
                                         <i class="fa-solid fa-plus"></i>

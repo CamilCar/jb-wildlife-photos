@@ -3,7 +3,7 @@
 {% block content %}
     <div class="webshop-hero hero-image-sizing">
         {% include 'includes/mobile-nav.html' %}
-        <div class="shopping-cart">{% include 'includes/cart_nav.html' %}</div>
+        <div class="shopping-cart z-3">{% include 'includes/cart_nav.html' %}</div>
         <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
     </div>
     <div id="line-3"></div>
@@ -21,59 +21,64 @@
                 </div>
             </div>
         </div>
-        <form method="POST" action="{% url 'add_to_cart' print.id %}">
-            {% csrf_token %}
-            {% comment %} Code snippet from bootstrap {% endcomment %}
-            <div class="form-check">
-                <input class="form-check-input"
-                       type="radio"
-                       name="size"
-                       id="inlineRadio1"
-                       value="a4"
-                       checked>
-                <label class="form-check-label" for="inlineRadio1">A4 |</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input"
-                       type="radio"
-                       name="size"
-                       id="inlineRadio2"
-                       value="a3">
-                <label class="form-check-label" for="inlineRadio2">A3 |</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input"
-                       type="radio"
-                       name="size"
-                       id="inlineRadio3"
-                       value="a3+">
-                <label class="form-check-label" for="inlineRadio3">A3+ |</label>
-                <input id="priceValueInput" type="hidden" name="price" value="" />
-                <input id="printId" type="hidden" name="print_id" value="{{ print.id }}" />
-                <p>
-                    <strong>Price:</strong>
-                    €
-                </p>
-                <span id="priceValue"></span>
-            </div>
-            <div class="print-amount">
-                <div class="form__group field">
-                    <input type="number"
-                           class="form__field"
-                           name="quantity"
-                           value="1"
-                           min="1"
-                           max="10"
-                           data-item-id="{{ print.id }}"
-                           id="id_qty_{{ print.id }}">
+        <div class="d-flex justify-content-center">
+            <form method="POST" action="{% url 'add_to_cart' print.id %}">
+                {% csrf_token %}
+                {% comment %} Code snippet from bootstrap {% endcomment %}
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="size"
+                           id="inlineRadio1"
+                           value="a4"
+                           checked>
+                    <label class="form-check-label" for="inlineRadio1">A4 |</label>
                 </div>
-            </div>
-            <input type="submit"
-                   id="cart-btn"
-                   class="btn btn-success"
-                   value="Add to cart">
-            <input type="hidden" name="redirect_url" value="{{ request.path }}">
-        </form>
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="size"
+                           id="inlineRadio2"
+                           value="a3">
+                    <label class="form-check-label" for="inlineRadio2">A3 |</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="size"
+                           id="inlineRadio3"
+                           value="a3+">
+                    <label class="form-check-label" for="inlineRadio3">A3+ |</label>
+                    <input id="priceValueInput" type="hidden" name="price" value="" />
+                    <input id="printId" type="hidden" name="print_id" value="{{ print.id }}" />
+                    <p>
+                        <strong>Price:</strong>
+                        €
+                    </p>
+                    <span id="priceValue"></span>
+                </div>
+                <div class="print-amount">
+                    <div class="form__group field d-flex justify-content-center">
+                        <input type="number"
+                               required
+                               class="form__field"
+                               name="quantity"
+                               value="1"
+                               min="1"
+                               max="10"
+                               data-item-id="{{ print.id }}"
+                               id="id_qty_{{ print.id }}">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <input type="submit"
+                           id="cart-btn"
+                           class="btn btn-success "
+                           value="Add to cart">
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                </div>
+            </form>
+        </div>
     </div>
     <script>
         const prices = {{prices|safe}}.map(obj => obj.fields)
