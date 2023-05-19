@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="contact-hero hero-image-sizing">
+        {% include 'includes/mobile-nav.html' %}
+        <div class="shopping-cart z-3">{% include 'includes/cart_nav.html' %}</div>
+        <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
+    </div>
+    <div id="line-3"></div>
+    <div class="page-wrapper">
+        <div class="page-title text-center">
+            <span>Admin</span>
+            <div id="line-2"></div>
+        </div>
+        <div class="page-text text-center">
+            <strong>Orders:</strong>
+            {% if orders %}
+            {% for order in orders %}
+            {{order}}
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

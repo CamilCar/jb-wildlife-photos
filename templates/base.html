@@ -6,7 +6,7 @@
     {% block meta %}
       <meta name="description" content="Webshop for wildlife prints">
       <meta name="keywords"
-            content="Wildlife, wildlife in sweden, wildlife prints.">
+            content="Wildlife photography, sweden wildlife, wildlife prints, wildlife pictures.">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <meta charset="utf-8">
       <meta name="viewport"
@@ -106,9 +106,15 @@
             </div>
           </section>
           <ul class="nav justify-content-center bottom-nav">
+            {% if user.is_superuser %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'admin_page' %}">Admin page</a>
+            </li>
+            {% else %}
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="#">Top</a>
             </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'webshop' %}">Webshop</a>
             </li>
