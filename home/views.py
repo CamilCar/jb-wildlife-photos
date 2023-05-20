@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from orders.models import Order, OrderItem, ShippingInformation
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import user_passes_test
+from orders.models import Order
 from webshop.models import PrintOption
 
 # Create your views here.
@@ -41,22 +43,22 @@ def pricing(request):
     return render(request, 'pricing/pricing.html')
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def admin_page(request):
     """ Returns admin page """
 
-    order_list = []
-
     orders = Order.objects.all()
-    shipping_informations = ShippingInformation.objects.all()
-
-    # for order in orders:
-    #     #order.shipping_information
-    #     order_items = order.prints.all()
-    #     complete_order = {
-
-    #     }
-    #     print(order_items)
 
     return render(request, 'admin/admin_page.html', {
         "orders": orders
     })
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def update_status(request, order_id, new_status):
+    order = get_object_or_404(Order, pk=order_id)
+
+    order.status = new_status
+    order.save()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

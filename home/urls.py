@@ -10,4 +10,6 @@ urlpatterns = [
     path('policy/', views.policy, name='policy'),
     path('pricing/', views.pricing, name='pricing'),
     path('admin_page/', views.admin_page, name='admin_page'),
+    path('update_status/<order_id>/<new_status>', views.update_status,
+         name="update_status")
 ]

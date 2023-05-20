@@ -9,15 +9,76 @@
     <div id="line-3"></div>
     <div class="page-wrapper">
         <div class="page-title text-center">
-            <span>Admin</span>
+            <span>Orders</span>
             <div id="line-2"></div>
         </div>
         <div class="page-text text-center">
-            <strong>Orders:</strong>
             {% if orders %}
-            {% for order in orders %}
-            {{order}}
-            {% endfor %}
+                {% for order in orders %}
+                <div class="container mt-5">
+                    <div class="row">
+                      <div class="col align-self-center">
+                        <p class="mb-0 mt-0 page-p">
+                            {{ order.user.username }}
+                        </p>
+                      </div>
+                      <div class="col align-self-center">
+                        {% for print in order.prints.all %}
+                        <div>
+                            <span class="mb-0 mt-0 page-p">
+                                {{ print.amount }}x
+                            </span>
+                            <span class="mb-0 mt-0 page-p">
+                                {{ print.print.name }}
+                            </span>
+                            <span class="mb-0 mt-0 page-p">
+                                {{ print.print_option.size }}
+                            </span>
+                        </div>
+                        {% endfor %} 
+                      </div>
+                      <div class="col align-self-center">
+                        <div>
+                            <p class="mb-0 mt-0 page-p">
+                                {{ order.shipping_information.name }}
+                            </p>
+                            <p class="mb-0 mt-0 page-p">
+                                {{ order.shipping_information.address }}
+                            </p>
+                            <p class="mb-0 mt-0 page-p">
+                                {{ order.shipping_information.postal_code }} {{ order.shipping_information.city }}
+                            </p>
+                            <p class="mb-0 mt-0 page-p">
+                                {{ order.shipping_information.phone }}
+                            </p >
+                            <p class="mb-0 mt-0 page-p">
+                                {{ order.shipping_information.email }}
+                            </p>
+                        </div>
+                      </div>
+                      <div class="col align-self-center">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ order.status }}
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                {% for status, value in order.STATUS_OPTIONS %}
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'update_status' order.id value %}">
+                                            {{ status }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                          </div> 
+                    </div>
+                    </div>
+                  </div>
+                {% endfor %}
+            {% else %}
+            <p>
+                There are no orders to show...
+            </p>
             {% endif %}
         </div>
     </div>
