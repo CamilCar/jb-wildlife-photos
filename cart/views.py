@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from cart.forms import ConfirmBookingForm
 from django.http import HttpResponseRedirect
-
+# from django.contrib import messages
 from webshop.models import PrintOption
 
 # Create your views here.
@@ -91,5 +91,7 @@ def checkout(request):
 
     return render(request, 'cart/checkout.html', {
         'is_authenticated': request.user.is_authenticated,
-        'shipping_information': shipping_information_form
+        'shipping_information': shipping_information_form,
+        'stripe_public_key': 'pk_test_51N9oqfE5lPSi6ejG4EggglOyiLhas9uGiBQ3av0m91jRVvfCUhgvH2uG8TVs7dG6H0OxwA7SdUN59JQaqM4Ob0qs00bTUi0Ne5',
+        'client_secret': 'test client secret',
     })
