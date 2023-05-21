@@ -21,7 +21,7 @@
             </div>
             <div class="offcanvas-body text-light">
                 <div class="table-responsive">
-                    <table class="table table-sm table-borderless">
+                    <table style="table-layout:fixed;" class="table table-sm table-borderless">
                         {% for item in cart_items %}
                             <tr>
                                 <td class="p-3 w-25">
@@ -44,26 +44,40 @@
                             <tr>
                                 <td> 
                                     <a href="{% url 'minus_print_from_cart' item.print.id item.size %}">
-                                        <i class="fa-solid fa-minus"></i>
+                                        <i class="fa-solid fa-minus" style="color: #FBFBFB;"></i>
                                     </a>
                                 </td>
                                 <td>
                                     <span class="my-0 text-light">{{ item.quantity }}</span>
                                 </td>
                                 <td>
-                                    <a href="{% url 'plus_print_to_cart' item.print.id item.size %}">
-                                        <i class="fa-solid fa-plus"></i>
+                                    <a class="plus_print_to_cart_button" href="#" onclick="plusPrint('{{ item.quantity }}', '{{ item.print.id }}')" >
+                                        <i class="fa-solid fa-plus" style="color: #FBFBFB;" value="{% url 'plus_print_to_cart' item.print.id item.size %}"></i>
                                     </a>
                                 </td>
                                 <td>
                                     <a href="{% url 'delete_from_cart' item.print.id item.size %}">
-                                        <i class="fa-solid fa-trash-can" style="color: #ff0000;"></i>
+                                        <i class="fa-solid fa-trash-can" style="color: #e0451f;"></i>
                                     </a>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <p class="text-danger max_quantity max_quantity_message-{{ item.print.id }}">You can only add 10 of the same print</p>
+                                </td>
+                            </tr>
                         {% endfor %}
+
+                        
+
                         <td colspan="5" class="pt-5 text-right text-light">
                             <h6 text-light>Cart total:</h6>
+                            <span>Delivery:</span>
+                        <span>
+                            {% if delivery > 0 %}
+                                €{{ delivery|floatformat:2 }}
+                            {% endif %}
+                        </span>
                             {% if free_delivery_calculator > 0 %}
                                 <p class="mb-1 text-danger">€{{ free_delivery_calculator }} until free shipping</p>
                             {% else %}
@@ -86,3 +100,26 @@
         </div>
     </div>
 {% endif %}
+<script>
+    let maxQuantityWarning = $(".max_quantity");
+    
+    maxQuantityWarning.hide();
+
+    $(document).click(function(e) {
+        const plusButtonPressed = ($(e.target).attr('value'))?.includes("plus");
+        if (!plusButtonPressed) {
+            maxQuantityWarning.hide();
+        }
+    });
+
+    const plusPrint = (amount, printId) => {
+        if (+amount > 9) {
+            const maxQuantityMessageForPrint = $(`.max_quantity_message-${printId}`);
+            maxQuantityMessageForPrint.show();
+        } else {
+            const url = $(this.event.target).attr('value');
+            document.location.href = url;
+        }
+        return false; 
+    }
+</script>
