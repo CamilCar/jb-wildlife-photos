@@ -37,7 +37,7 @@
                             </div>
                             <div class="col">
                                 <a href="{% url 'delete_from_cart' item.print.id item.size %}">
-                                    <i class="fa-solid fa-trash-can" style="color: #FBFBFB;"></i>
+                                    <i class="fa-solid fa-trash-can" style="color: #e0451f;"></i>
                                 </a>
                             </div>
                         </div>
@@ -56,7 +56,9 @@
                             free
                         {% endif %}
                     </span>
-                    <p><strong>Grand total: €{{ total_sum|floatformat:2 }}</strong></p> 
+                    <p>
+                        <strong>Grand total: €{{ total_sum|floatformat:2 }}</strong>
+                    </p>
                 </div>
             </div>
             <div class="text-center">
@@ -76,20 +78,19 @@
                 <form method="POST" action="{% url 'create_order' %}">
                     {% csrf_token %}
                     {{ shipping_information }}
-
                     <!-- Code from CI boutique_ado -->
                     <fieldset class="px-3">
                         <legend class="fieldset-label small text-light px-2 w-auto">Payment</legend>
                         <!-- A Stripe card element will go here -->
                         <div class="mb-3" id="card-element"></div>
-
                         <!-- Used to display form errors -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     </fieldset>
-                    <button class="btn btn-success" type="submit">Confirm order</button>
+                    <button id="submit-button" class="btn btn-success" type="submit">Complete order</button>
                 </form>
             </div>
         </div>
+        <div id="loading-overlay"></div>
     {% else %}
         <p class="text-light text-center">Your cart is empty</p>
     {% endif %}
@@ -99,6 +100,7 @@
         $('#continue-checkout-shipping').on('click', () => {
             $('#shipping-information-form').show()
         })
+
 </script>
 {% endblock content %}
 <!-- Code from ci boutiqe_ado project -->

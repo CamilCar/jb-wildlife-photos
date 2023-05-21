@@ -1,9 +1,13 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render, redirect, reverse
+from django.conf import settings
+
 from cart.forms import ConfirmBookingForm
 from django.http import HttpResponseRedirect
-# from django.contrib import messages
+from django.contrib import messages
 from webshop.models import PrintOption
+from cart.contexts import cart_content
 
+import stripe
 # Create your views here.
 
 
@@ -61,7 +65,9 @@ def plus_print_to_cart(request, print_id, print_size):
     print_key = f"{print_id}{print_size_id}"
 
     if print_key in list(cart.keys()):
-        cart[print_key]['quantity'] += 1
+        quantity = cart[print_key]['quantity']
+        if quantity < 10:
+            quantity += 1
 
     request.session['cart'] = cart
 
@@ -87,11 +93,31 @@ def minus_print_from_cart(request, print_id, print_size):
 
 
 def checkout(request):
+    cart = request.session.get('cart', {})
+    if not cart:
+        messages.error(request, "There's nothing in your cart at the moment")
+        return redirect(reverse('webshop'))
+
     shipping_information_form = ConfirmBookingForm()
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+
+    current_cart = cart_content(request)
+    total = current_cart['total_sum']
+    stripe_total = round(total * 100)
+
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total,
+        currency=settings.STRIPE_CURRENCY,
+    )
+
+    if not stripe_public_key:
+        messages.warning(request, 'Stripe public key is missing.')
 
     return render(request, 'cart/checkout.html', {
         'is_authenticated': request.user.is_authenticated,
         'shipping_information': shipping_information_form,
-        'stripe_public_key': 'pk_test_51N9oqfE5lPSi6ejG4EggglOyiLhas9uGiBQ3av0m91jRVvfCUhgvH2uG8TVs7dG6H0OxwA7SdUN59JQaqM4Ob0qs00bTUi0Ne5',
-        'client_secret': 'test client secret',
+        'stripe_public_key': stripe_public_key,
+        'client_secret': intent.client_secret,
     })
