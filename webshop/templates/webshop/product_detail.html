@@ -81,6 +81,7 @@
         </div>
     </div>
     <script>
+        // Display price depending on chosen size in product detail
         const prices = {{prices|safe}}.map(obj => obj.fields)
         const priceValueField = $("#priceValue")
         const priceValueFieldInput = $("#priceValueInput");

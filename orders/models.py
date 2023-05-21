@@ -9,7 +9,10 @@ from webshop.models import Print, PrintOption
 
 class OrderItem(models.Model):
     """
-    Creating orders item data model
+    Create orders item data model.
+    OrderItem is the connection between Print and Order.
+    It includes the amount of the specific print and the size(a.k.a
+    PrintOption)
     """
     print = models.ForeignKey(Print, on_delete=models.CASCADE,
                               related_name='prints')
@@ -23,7 +26,7 @@ class OrderItem(models.Model):
 
 class ShippingInformation(models.Model):
     """
-    Creating shipping information data model
+    Create shipping information data model
     """
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
@@ -38,7 +41,7 @@ class ShippingInformation(models.Model):
 
 class Order(models.Model):
     """
-    Creating orders data model
+    Create orders data model
     """
     STATUS_OPTIONS = (
         ('new', 'New'),

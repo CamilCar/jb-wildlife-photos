@@ -3,9 +3,11 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+
 class Category(models.Model):
     """"
-    Creating categories data model for the prints
+    Create categories data model for the prints
+    that are used to filter in webshop
     """
     name = models.CharField(max_length=255)
 
@@ -18,7 +20,7 @@ class Category(models.Model):
 
 class Print(models.Model):
     """
-    Creating prints(products) data model
+    Create prints(products) data model
     """
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='print_images')
@@ -31,7 +33,7 @@ class Print(models.Model):
 
 class PrintOption(models.Model):
     """
-    Creating sizes for prints data model
+    Create sizes for prints data model
     """
     a4 = 'a4'
     a3 = 'a3'

@@ -53,7 +53,7 @@ def admin_page(request):
         "orders": orders
     })
 
-
+# Allows admin to update order status
 @user_passes_test(lambda u: u.is_superuser)
 def update_status(request, order_id, new_status):
     order = get_object_or_404(Order, pk=order_id)

@@ -6,7 +6,9 @@ from .models import Category, Print, PrintOption
 
 
 def webshop(request):
-    """ Returns webshop page, including filter """
+    """ Returns webshop page, including a category
+    for filtering on page
+    """
     prints = None
     categories = Category.objects.all()
 
@@ -23,6 +25,7 @@ def webshop(request):
 
 
 def product_detail(request, pk):
+    """ Return product detail page with the correct product """
     product = get_object_or_404(Print, pk=pk)
     prices = serialize("json", PrintOption.objects.all())
 

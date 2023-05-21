@@ -18,6 +18,9 @@ def view_cart(request):
 
 
 def add_to_cart(request, print_id):
+    """
+    Adds a product to cart
+    """
     quantity = int(request.POST.get('quantity'))
     size = request.POST.get('size')
     print_option = get_object_or_404(PrintOption, size=size)
@@ -25,6 +28,8 @@ def add_to_cart(request, print_id):
 
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
+    # Creates a unique key by combining the
+    # print id and the print option id
     print_key = f"{print_id}{print_size_id}"
 
     if print_key in list(cart.keys()):
@@ -43,6 +48,9 @@ def add_to_cart(request, print_id):
 
 
 def delete_from_cart(request, print_id, print_size):
+    """
+    Delete a item from cart
+    """
     cart = request.session.get('cart', {})
     print_option = get_object_or_404(PrintOption, size=print_size)
     print_size_id = print_option.id
@@ -58,6 +66,10 @@ def delete_from_cart(request, print_id, print_size):
 
 
 def plus_print_to_cart(request, print_id, print_size):
+    """
+    Adds 1 to a already existing product, 
+    can not add above 10
+    """
     cart = request.session.get('cart', {})
     print_option = get_object_or_404(PrintOption, size=print_size)
     print_size_id = print_option.id
@@ -75,6 +87,10 @@ def plus_print_to_cart(request, print_id, print_size):
 
 
 def minus_print_from_cart(request, print_id, print_size):
+    """
+    Removes 1 from cart, deletes from cart if
+    it's the last one
+    """
     cart = request.session.get('cart', {})
     print_option = get_object_or_404(PrintOption, size=print_size)
     print_size_id = print_option.id
@@ -93,6 +109,10 @@ def minus_print_from_cart(request, print_id, print_size):
 
 
 def checkout(request):
+    """
+    Goes from the cart to checkout. 
+    Setup stripe payment intent
+    """
     cart = request.session.get('cart', {})
     if not cart:
         messages.error(request, "There's nothing in your cart at the moment")
