@@ -87,15 +87,13 @@
                         </td>
                     </table>
                 </div>
-                <button class="btn btn-success" type="button">
-                    <a href="{% url 'checkout' %}" class="text-light text-decoration-none">
+                    <a href="{% url 'checkout' %}" class="btn btn-success text-light text-decoration-none">
                         Continue to secure checkout
                         <i class="fa-solid fa-lock" style="color: #c88b09;"></i>
                         <span class="my-0">
                             {% if total_sum %}${{ total_sum|floatformat:2 }}{% endif %}
                         </span>
                     </a>
-                </button>
             </div>
         </div>
     </div>

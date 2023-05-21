@@ -65,10 +65,8 @@
                 {% if is_authenticated %}
                     <button id="continue-checkout-shipping" class="btn btn-success">continue</button>
                 {% else %}
-                    <a href="{% url 'account_signup' %}">
-                        <button class="btn btn-success"
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">Continue to checkout</button>
+                    <a href="{% url 'account_signup' %}" class="btn btn-success">
+                        Continue to checkout
                     </a>
                     <p class="text-light">*You will be asked to sign in to proceed</p>
                 {% endif %}
