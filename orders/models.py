@@ -17,7 +17,6 @@ class OrderItem(models.Model):
     print_option = models.ForeignKey(PrintOption, on_delete=models.CASCADE,
                                      related_name='print_options')
 
-
     def __str__(self):
         return f"{self.print.name} - id: {self.pk}"
 

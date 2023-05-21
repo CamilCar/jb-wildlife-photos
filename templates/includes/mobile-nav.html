@@ -31,7 +31,7 @@
         </li>
         {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Log Out</a>
+            <a class="nav-link text-light" href="{% url 'account_logout' %}">Log Out</a>
           </li>
           {% else %}
                 <li class="nav-item">
