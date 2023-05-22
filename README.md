@@ -175,6 +175,10 @@ a rating and comment system.
 - CSS 
     - Direct input with (Jigsaw) validator found no errors 2 warnings. 
 
+- Accessibillity
+    - In incognito mode I tested this page in devtools lighthouse
+   ![Lighthouse result](media/lighthouse.jpg)     
+
 ## Deployment
 ---------------
 
