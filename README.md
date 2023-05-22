@@ -2,6 +2,8 @@
 
 An online webshop for wildlife prints from photographer Joris Bomert.
 
+![Am i responsive ](/media/amiresponsive.jpg) 
+
 ## Development 
 ---------------
 - This sites main purpose is to advertise and sell JB's photos to customers that are looking to buy beautiful prints of wild animals.  
@@ -21,7 +23,7 @@ a rating and comment system.
 - The site will link to following sites to increase SEO validation:
     - Svenska Rovdjursföreningen, a Swedish wildlife magazine that often publishes JB's photographs. 
     - Canon, whose products are used by JB to produce these beautiful photos and prints. 
-- The link to this site will be published on both Instagram and the Facebook business page
+- The link to this site will be published on the Facebook business page, and in a future realease also on Instagram.
 
 ### Users
 - This sites user focus are people who appreciate wildlife, and would like to purchase a print of their choice from our webshop. 
@@ -117,7 +119,7 @@ a rating and comment system.
     - The cart is a modal that displays the print image, name, size, cart total and how much is left until free shipping
      ![Production checkout page](media/cart.done.jpg)
     - The customer can also increase, decrease and delete items directly in this modal. 
-    - There is a limit set to 10 prints, if user tries to add more they get a helpful message. 
+    - There is a limit set to 10 prints. 
 
 - Checkout 
     - A multi stage page, where customer starts off by reviewing their cart content and total price.
@@ -142,19 +144,21 @@ a rating and comment system.
 
 ### Features left to implement
 - In a future release I would:
-    - Add a success message when user adds a item to cart. 
-    - On checkout page, give customer a error message if they try to add more than 10 of the same prints. Currently only works on the cart view and
-    the product detail page. 
+    - Add a success message when user adds a item to cart. For now the only feedback there is, is that a shopping cart appears.
+    - On checkout page and cart modal, give customer a error message if they try to add more than 10 of the same prints.
     - Add '*required' text output on the shipping form, for increased clarity for customer when they fill in this form. 
     - A rating system for each print
     - A user comment section, to improve site trustworthyness.
     - Setup the Stripe modal and webhooks and implement live keys for real payments. 
+    - Authentication modal instead of user ending up on a different page. 
+    - Authentication by social account. 
+    - A custom domain and a google business page. 
 
 ## Testing 
 --------------------
 - The page has been thoroughly tested manually on:
     - The cart - Increase, decrease and delete amount. If user goes below 1 print, it's deleted from cart. 
-    - Checkout - Increase, decrease and delete amount. If item gets deleted checkout page is empty with a feedback to user. 
+    - Checkout - Increase, decrease and delete amount. If item gets deleted checkout page is empty with a feedback message to the user. 
     - Webshop - filtering mamals and birds. 
     - Print detail - Price responding correctly. User can increase prints up to 10. User can not insert a string or leave empty field. 
     - All navigation leads correctly 
@@ -165,8 +169,11 @@ a rating and comment system.
 - Encountered a early bug where all users carts would be increased if another user added a product to cart. Once context was set up properly it dissapeared. 
 #### Remaining bugs 
 - After a successful purchase where the user lands on thanks_for_order page, if the user then clicks backspace on their mouse they get back to the checkout page again with the same products. 
+- If user tries to add more than 10 of the same print and size, it's supposed to trigger a message for the user that they can not add more than 10. This does not happen now. 
 
 ### Validator Testing
+- CSS 
+    - Direct input with (Jigsaw) validator found no errors 2 warnings. 
 
 ## Deployment
 ---------------
@@ -214,3 +221,4 @@ a rating and comment system.
 ### Content
 - For mockup, 'moqups.com' was used. This page offered 400 objects for free, it's easy to use and learn, and offers great tools for project planning. For future projects I would concider purchase upgraded plan to not have any limitations. 
 - All photos used on this page is by photographer Joris Bomert with his permission.
+- https://ui.dev/amiresponsive used to generate the media query image at the top of this readme. 
