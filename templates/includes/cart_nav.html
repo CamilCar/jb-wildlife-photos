@@ -52,7 +52,7 @@
                                     <span class="my-0 text-light">{{ item.quantity }}</span>
                                 </td>
                                 <td>
-                                    <a class="plus_print_to_cart_button" href="#" onclick="plusPrint('{{ item.quantity }}', '{{ item.print.id }}')" >
+                                    <a class="plus_print_to_cart_button" href="#" onclick="plusPrint('{{ item.quantity }}', '{{ item.print.id }}', '{{ item.size }}')" >
                                         <i class="fa-solid fa-plus" style="color: #FBFBFB;" value="{% url 'plus_print_to_cart' item.print.id item.size %}"></i>
                                     </a>
                                 </td>
@@ -64,7 +64,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <p class="text-danger max_quantity max_quantity_message-{{ item.print.id }}">You can only add 10 of the same print</p>
+                                    <p id="max_quantity_message-{{ item.print.id }}-{{ item.size }}" class="text-danger max_quantity">You can only add 10 of the same print</p>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -100,21 +100,19 @@
     </div>
 {% endif %}
 <script>
-    let maxQuantityWarning = $(".max_quantity");
     
-    maxQuantityWarning.hide();
-
     $(document).click(function(e) {
         const plusButtonPressed = ($(e.target).attr('value'))?.includes("plus");
         if (!plusButtonPressed) {
+            const maxQuantityWarning = $(".max_quantity");
             maxQuantityWarning.hide();
         }
     });
 
-    const plusPrint = (amount, printId) => {
+    const plusPrint = (amount, printId, size) => {
         if (+amount > 9) {
-            const maxQuantityMessageForPrint = $(`.max_quantity_message-${printId}`);
-            maxQuantityMessageForPrint.show();
+            const maxQuantityMessageForPrint = $(`#max_quantity_message-${printId}-${size}`);
+            $(`#max_quantity_message-${printId}-${size} .max_quantity`).show();
         } else {
             const url = $(this.event.target).attr('value');
             document.location.href = url;

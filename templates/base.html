@@ -56,7 +56,7 @@
              alt="Snowy mountains of Dovre, Norway">
         <div class="carousel-caption">
           <h1 class="text-center m-5 newsletter-header">Sign up for my newsletter</h1>
-          <section class="text-center p-5 mt-4">
+          <div class="text-center p-5 mt-4">
             <div class="container p-3">
               <!-- MailChimp newsletter signup form -->
               <form action="https://gmail.us21.list-manage.com/subscribe/post?u=1a415199e64cbcb364433d0c4&amp;id=08cc237748&amp;f_id=0023ade1f0"
@@ -83,7 +83,7 @@
                 </div>
               </form>
             </div>
-          </section>
+          </div>
         </div>
       </div>
     {% endblock newsletter %}
@@ -91,29 +91,34 @@
       <footer class="text-center footer-wrapper">
         <!-- Bootstrap footer base -->
         <div class="container pt-4">
-          <section class="mb-4">
+          <div class="mb-4">
             <a class="btn btn-link btn-floating btn-lg text-dark m-1"
                href="https://www.facebook.com/profile.php?id=100092367160749"
+               aria-label="Link to our Facebook"
                target="_blank"
                role="button"
                data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
             <a class="btn btn-link btn-floating btn-lg text-dark m-1"
                href="https://www.google.com/"
+               aria-label="Link to Google"
                target="_blank"
                role="button"
                data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
             <a class="btn btn-link btn-floating btn-lg text-dark m-1"
                href="https://www.instagram.com/jorisbomert_nature_photography/"
+               aria-label="Link to our Instagram"
                target="_blank"
                role="button"
                data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
             <a class="btn btn-link btn-floating btn-lg text-dark m-1"
                href="https://www.linkedin.com/in/joris-bomert-3a700478/"
+               aria-label="Link to JB's Linkedin profile"
                target="_blank"
                role="button"
                data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
             <a class="btn btn-link btn-floating btn-lg text-dark m-1"
                href="https://github.com/CamilCar/jb-wildlife-photos"
+               aria-label="Link to this websites github repository"
                target="_blank"
                role="button"
                data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
@@ -126,7 +131,7 @@
                 jbphotos@gmail.com
               </p>
             </div>
-          </section>
+          </div>
           <ul class="nav justify-content-center bottom-nav">
             {% if user.is_superuser %}
               <li class="nav-item">
@@ -188,7 +193,5 @@
     {% block postloadjs %}<script type="text/javascript">$('.toast').toast('show');</script>{% endblock %}
   </body>
 </html>
-<script type='text/javascript'
-        src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'>
-</script>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
 <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>

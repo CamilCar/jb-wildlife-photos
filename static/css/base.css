@@ -80,6 +80,7 @@ body {
 
 /* End hero images and sizing */
 
+/* Index page styling */ 
 .quote-p, #mce-success-response {
     font-family: 'Source Sans Pro', sans-serif;
     color: #606060;
@@ -92,6 +93,13 @@ body {
     text-decoration: none;
     color: #444444;
 }
+
+.three-reasons-wrapper {
+    background-color: #e2ee79;;
+    height: auto;
+}
+
+/* Cart and card styling */ 
 
 .offcanvas {
     background-color: #424242;
@@ -200,14 +208,7 @@ h3 {
 }
 /* End nav element styling */
 
-.three-reasons-wrapper {
-    background-color: #e2ee79;;
-    height: auto;
-}
-
-.col- {
-    margin: 40px;
-}
+/* Line to divide sections */ 
 
 #line-2{
     width: 3em;
@@ -221,6 +222,7 @@ h3 {
     background: #e2ee79;
 }
 
+/* Bootstrap carousel styling */ 
 .carousel {
     width: 95%;
     margin: auto;
@@ -332,6 +334,10 @@ input[type=email] {
 .form-check {
     display: inline-flex;
     color: #f7f6f6;
+}
+
+.col- {
+    margin: 40px;
 }
 
 /* Stripe styling from stripe */
@@ -478,6 +484,7 @@ input[type=email] {
     }
 }
 
+/* Navigation contrast sollution on white/black background */
 @media screen and (max-width: 560px) {
 .nav-dark-color {
     color: rgb(196, 193, 193)!important;

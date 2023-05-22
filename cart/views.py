@@ -77,9 +77,8 @@ def plus_print_to_cart(request, print_id, print_size):
     print_key = f"{print_id}{print_size_id}"
 
     if print_key in list(cart.keys()):
-        quantity = cart[print_key]['quantity']
-        if quantity < 10:
-            quantity += 1
+        if cart[print_key]['quantity'] < 10:
+            cart[print_key]['quantity'] += 1
 
     request.session['cart'] = cart
 
