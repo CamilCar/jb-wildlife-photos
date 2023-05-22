@@ -142,6 +142,10 @@ a rating and comment system.
         - If user is not signed in, the navigation option to sign in is listed here.
         - If user is signed in, the navigation option to log out is listed here. 
 
+- Admin page frontend
+    - If admin is signed in there is a additional page to view orders for easier order handeling. 
+    - ![Admin page](media/adminpage.jpg) 
+
 ### Features left to implement
 - In a future release I would:
     - Add a success message when user adds a item to cart. For now the only feedback there is, is that a shopping cart appears.
@@ -173,7 +177,10 @@ a rating and comment system.
 
 ### Validator Testing
 - CSS 
-    - Direct input with (Jigsaw) validator found no errors 2 warnings. 
+    - Direct input with (Jigsaw) validator found no errors, 2 warnings. 
+- HTML 
+    - Code passes through the W3C validator with no errors, 3 warnings.
+ 
 
 - Accessibillity
     - In incognito mode I tested this page in devtools lighthouse
