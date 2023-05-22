@@ -67,7 +67,7 @@ def delete_from_cart(request, print_id, print_size):
 
 def plus_print_to_cart(request, print_id, print_size):
     """
-    Adds 1 to a already existing product, 
+    Adds 1 to a already existing product,
     can not add above 10
     """
     cart = request.session.get('cart', {})
@@ -109,7 +109,7 @@ def minus_print_from_cart(request, print_id, print_size):
 
 def checkout(request):
     """
-    Goes from the cart to checkout. 
+    Goes from the cart to checkout.
     Setup stripe payment intent
     """
     cart = request.session.get('cart', {})

@@ -65,15 +65,13 @@
                 {% if is_authenticated %}
                     <button id="continue-checkout-shipping" class="btn btn-success">continue</button>
                 {% else %}
-                    <a href="{% url 'account_signup' %}" class="btn btn-success">
-                        Continue to checkout
-                    </a>
+                    <a href="{% url 'account_signup' %}" class="btn btn-success">Continue to checkout</a>
                     <p class="text-light">*You will be asked to sign in to proceed</p>
                 {% endif %}
             </div>
             <hr class="bg-secondary border-2 border-top border-secondary">
             <div id="shipping-information-form" class="w-50 center mx-auto text-light">
-                <form method="POST" action="{% url 'create_order' %}">
+                <form method="post" action="{% url 'create_order' %}">
                     {% csrf_token %}
                     {{ shipping_information }}
                     <!-- Code from CI boutique_ado -->
@@ -87,19 +85,18 @@
                     <button id="submit-button" class="btn btn-success" type="submit">Complete order</button>
                 </form>
             </div>
-        </div>
-        <div id="loading-overlay"></div>
-    {% else %}
-        <p class="text-light text-center">Your cart is empty</p>
-    {% endif %}
-</div>
-<script>
+            <div id="loading-overlay"></div>
+        {% else %}
+            <p class="text-light text-center">Your cart is empty</p>
+        {% endif %}
+    </div>
+    <script>
         $('#shipping-information-form').hide()
         $('#continue-checkout-shipping').on('click', () => {
             $('#shipping-information-form').show()
         })
 
-</script>
+    </script>
 {% endblock content %}
 <!-- Code from ci boutiqe_ado project -->
 {% block postloadjs %}
