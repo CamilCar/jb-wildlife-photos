@@ -11,12 +11,6 @@ import stripe
 # Create your views here.
 
 
-def view_cart(request):
-    """ Returns cart page """
-
-    return render(request, 'cart/cart.html')
-
-
 def add_to_cart(request, print_id):
     """
     Adds a product to cart
