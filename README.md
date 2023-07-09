@@ -161,12 +161,59 @@ a rating and comment system.
 ## Testing 
 --------------------
 - The page has been thoroughly tested manually on:
-    - The cart - Increase, decrease and delete amount. If user goes below 1 print, it's deleted from cart. 
-    - Checkout - Increase, decrease and delete amount. If item gets deleted checkout page is empty with a feedback message to the user. 
-    - Webshop - filtering mamals and birds. 
-    - Print detail - Price responding correctly. User can increase prints up to 10. User can not insert a string or leave empty field. 
-    - All navigation leads correctly 
-    - All external links works and are opened in a new tab. 
+    - The cart icon:
+        - Is only displayed if a user has added a print to cart, as intended. Once visible, it displays the cart content to user in a modal. 
+        - Increase, decrease and delete buttons works correctly. If user goes below 1 print, it's deleted from cart.
+        - The free delivery treshold is tested and correctly reflects the purchase treshold to user.  
+        - Continue to secure checkout button leads the user to checkout as intended, and the price calculator shows the correct price.
+    - Checkout:
+        - Increase, decrease and delete amount options works. If item gets deleted, checkout page is empty with a feedback message to the user. 
+        - Print amount and price calculator is working correctly. 
+        - Continue button is present, and handles authenticated/non authenticated requests as intended. 
+        - Shipping form handles valid/invalid input as expected. Complete order option is present and working. If user presses backspace on the site, the user gets sent back to the shipping form. If user then tries to submit again, they recieve a server error 500.
+    - All navigation works correctly: 
+        - Login - leads to user authentication page
+            - Routing works.
+            - Responds to user with Allauths helpful feedback whenever there is a issue to sign in.
+            - The option to sign up is present and the routing works. 
+            - Forgot password option is present and working.
+            - The button to sign in once all information is valid works correctly and signs in user.
+        - Sign up
+            - The routing to go to Sign In works and sends user to the Login page.
+            - If user has entered a valid form when Sign Up is pressed, user is signed in.
+            - If there is a invalid input from user, suchS as a 'already registered email', the issue is reflected back to the user thanks to Allauths helpful messages.
+        - Home - leads to index page.
+            - About, contact and webshop navigation leads users correctly. 
+            - Canon and rovdjursföreningen external links works correctly and are opened in a new tab. 
+            - The arrow slider function on the image carousel works correctly.
+        - Contact - leads to contact page
+            - Home, Contact and Webshop navigation leads users correctly.
+        - Webshop - leads to webshop page
+            - Filtering mamals and birds correctly. Mamals only shows mamals and birds only show bird prints to user. 
+            - Each print navigation takes user to the corresponding print for preview.
+            - Size option is responding correctly by showing the correct print price to size. User can increase prints up to 10. User can not insert a string or leave empty field. 
+        - Pricing - leads to price page
+            - Home, Contact and Webshop navigation leads users correctly.
+        - Delivery info - leads to delivery info page
+            - Home, Contact and Webshop navigation leads users correctly.
+            - GDPR link present on site works and leads user to users privacy info section.
+        - About - leads to about page
+            - Home, Contact and Webshop navigation leads users correctly.
+        - Authentication navbar:
+            - Login option if user is not authenticated. If user is authenticated:
+                - Authentication status reflected to user
+                - My Orders option:
+                    - Is empty if user has not completed a purchase
+                    - If user has completed a purchase, it displays the list correctly to user of each order. 
+                - Logout option present and working.
+        - Footer:
+            - The newsletter subscribe function setup through mailchimp works, however, no user feedback is present if a user types in a invalid input.
+            - Facebook, Google, Instagram, LinkedIn and GitHub links works correctly and are opened in a new tab.
+            - Authentication, Webshop, Pricing, Delivery Info, About and Contact all leads to the correct page. 
+            - JBphotos.com link leads to the index page of the webshop as expected. 
+    - All external links works and are opened in a new tab:
+        - Canon link on index page leads to https://www.canon-europe.com/cameras/ and opens in a new tab
+        - Svenska Rovdjursföreningen link on index page leads to https://rovdjur.se/ and opens in a new tab.
     
 ### Bugs
 - On print detail page; if user submited a blank form the amount input, the page encountered an error. Solved by adding 'required' to form input. 
@@ -174,14 +221,13 @@ a rating and comment system.
 #### Remaining bugs 
 - After a successful purchase where the user lands on thanks_for_order page, if the user then clicks backspace on their mouse they get back to the checkout page again with the same products. 
 - If user tries to add more than 10 of the same print and size, it's supposed to trigger a message for the user that they can not add more than 10. This does not happen now. 
+- If a user tries to sign up to the newsletter and types in a invalid input, such as '444.com', no feedback is reflected to user to assist. The newsletter was setup with my own design but with Mailchimps logic, so somewhere I lost logic from their mail service. 
 
 ### Validator Testing
 - CSS 
     - Direct input with (Jigsaw) validator found no errors, 2 warnings. 
 - HTML 
     - Code passes through the W3C validator with no errors, 3 warnings.
- 
-
 - Accessibillity
     - In incognito mode I tested this page in devtools lighthouse
    ![Lighthouse result](media/lighthouse.jpg)     
@@ -190,11 +236,21 @@ a rating and comment system.
 ---------------
 
 - The site was deployed by:
-    - Setting up a external database on ElephantSQL.com
-    - On Heroku.com, create a new app and connect it to the ElephantSQL database by adding the database url to heroku's config vars
+    - Setting up a external database on ElephantSQL.com:
+        - Firstly, login/create a ElephantSQL account. Click on the '+ Create New Instance button'. Name your project and select the Tiny Turtle(Free) plan, and then 'Select Region'(for me it was EU-North-1). Once selected, press 'Review', and then 'Create Instance'
+    - On Heroku.com, click 'New', Create New App. Choose a name and region, then click 'Create app'. Navigate to 'Settings' and find the 'Reveal Config Vars' button. Here, connect the ElephantSQL database by adding DATABASE_URL in the first form. From ElephantSQL.com page, copy the URL string (postgres://your_own_url_code) and paste it into the heroku config var form, to the right of the DATABASE_URL line. Click 'Add'.
+    - For use of cloudinary as host for static files, navigate to cloudinary.com. You can sign in with your GitHub account. Under 'Media Library' , you can select 'Upload' to upload files manually. I uploaded and stored static files in the database however, so I had to run  ' python manage.py collectstatic' (at the very end of my project, to not run into any deployment issues to Heroku). 
+    - Create a .env file in root directory. It needs to contain the CLOUDINARY_URL key that you find on your cloudinary account, the DATABASE_URL key (the one from ElephantSQL), and your very own SECRET_KEY key. The .env file should look similar to this if done right:
+        - CLOUDINARY_URL=cloudinary://cloudinary_generated_key
+        - DATABASE_URL=postgres://your_elephantSQL_url_key
+        - SECRET_KEY=your_own_secret_key_key
+    - Remember to not share or post these keys anywhere else in the code but in the .env file.
+    - Update requirements.txt by typing pip3 freeze --local > requirements.txt
+    - Back on Heroku under Config Vars, add the CLOUDINARY_URL and SECRET_KEY keys into the config var list. 
+    - Before deploying to heroku, make sure that DEBUG is set to FALSE in the projects settings file. 
     - Underneath Deploy on heroku, selecting deployment method: GitHub
     - Connect repository from GitHub
-    - Choose main branch, then Deploy Branch
+    - Choose main branch, then click on Deploy Branch
 
 ## Facebook
 ---------------
