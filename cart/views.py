@@ -123,7 +123,12 @@ def checkout(request):
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
         currency=settings.STRIPE_CURRENCY,
+        automatic_payment_methods={
+            "enabled": True,
+        },
     )
+
+    payment_intent_id = intent.id
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing.')
@@ -133,4 +138,5 @@ def checkout(request):
         'shipping_information': shipping_information_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
+        "payment_intent_id": payment_intent_id
     })

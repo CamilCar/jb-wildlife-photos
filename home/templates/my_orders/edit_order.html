@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="contact-hero hero-image-sizing">
+        {% include 'includes/mobile-nav.html' %}
+        {% include 'includes/auth_nav.html' %}
+        <div class="shopping-cart z-3">{% include 'includes/cart_nav.html' %}</div>
+        <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
+    </div>
+    <div id="line-3"></div>
+    <div class="page-wrapper">
+        <div class="d-flex">
+            <div class="" style="margin-left: 10%; margin-right: 20%; margin-top: 1em;"><a class="text-decoration-none link-secondary" href="{% url 'my_orders' %}">< Back</a></div>
+            <div class="page-title text-center">
+                <span>Order: {{order.date_ordered}}</span>
+                <div id="line-2"></div>
+            </div>
+        </div>
+        <div class="page-text text-center">
+            <div class="container mt-5 mb-5">
+                <h3 class="mb-3">Prints</h3>
+                <div class="row">
+                        {% for print in order.prints.all %}
+                            <div class="col align-self-center">
+                                <span class="mb-0 mt-0 page-p">
+                                    {{ print.amount }}x
+                                </span>
+                            </div>
+                            <div class="col align-self-center">
+                                <span class="mb-0 mt-0 page-p">
+                                    {{ print.print.name }}
+                                </span>
+                            </div>
+                            <div class="col align-self-center">
+                                <span class="mb-0 mt-0 page-p">
+                                    {{ print.print_option.size }}
+                                </span>
+                            </div>    
+                        {% endfor %}
+                </div>
+                <p class="quote-p">* If you want to change prints in the order, contant me directly</p>
+            </div>
+            {% if shipping_information_form %}
+            <div>
+                <h3 class="mb-3">Delivery information</h3>
+                <div class="w-50 justify-content-center d-inline-block mb-4">
+                    <form method="post" action="{% url 'edit_order' order.id %}">
+                        {% csrf_token %}
+                        {{shipping_information_form}}
+                        {% if shipping_form_not_valid %}
+                            <div class="alert alert-danger mt-3" role="alert">
+                                Form is invalid...
+                            </div>
+                        {% endif %}
+                        <button id="submit-button" class="btn btn-success mt-4" type="submit">Save changes</button>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
