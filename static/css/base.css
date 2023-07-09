@@ -380,6 +380,10 @@ input[type=email] {
     border: 1px solid #000;
 }
 
+.logged-in-as-mobile {
+    visibility: hidden;
+}
+
 /* Media Queries */
 
 /* Mobile and small screen devices up to 992px wide */
@@ -427,6 +431,13 @@ input[type=email] {
     }
     .hero-nav {
         visibility: hidden;
+    }
+    .auth-nav {
+        visibility: hidden;
+    }
+
+    .logged-in-as-mobile {
+        visibility: visible;
     }
 
     h3 {

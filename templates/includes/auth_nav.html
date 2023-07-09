@@ -1,0 +1,28 @@
+{% comment %} Navigation on all pages except index {% endcomment %}
+<div class="auth-nav position-absolute w-25" style="top: 60px; left: 7%">
+<div class="d-flex justify-content-between">
+{% if user.is_authenticated %}
+    <p class="log_in_nav text-light">Logged in as {{user.username}}</p>
+    <a class="btn nav-link log_in_nav text-light" href="{% url 'my_orders' %}" role="button">
+        My orders
+    </a>
+    <a class="btn nav-link log_in_nav text-light" href="{% url 'account_logout' %}" role="button">
+        Logout
+    </a>
+{% else %}
+    <a class="btn nav-link log_in_nav text-light" href="{% url 'account_login' %}" role="button">
+        Login
+    </a>
+{% endif %}
+</div>
+</div>
+<script>
+    const loginNavLinks = document.getElementsByClassName("log_in_nav")
+      if ( "{{render_dark}}"  ) {
+          for (link of loginNavLinks) {
+              link.classList.add("nav-dark-color")
+              link.classList.remove("text-light")
+              
+          }
+      }
+</script>

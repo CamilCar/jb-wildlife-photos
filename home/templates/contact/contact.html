@@ -3,6 +3,7 @@
 {% block content %}
   <div class="contact-hero hero-image-sizing">
     {% include 'includes/mobile-nav.html' %}
+    {% include 'includes/auth_nav.html' with render_dark=True %}
     <div class="shopping-cart z-3">{% include 'includes/cart_nav.html' %}</div>
     <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
   </div>

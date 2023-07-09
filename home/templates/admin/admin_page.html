@@ -3,6 +3,7 @@
 {% block content %}
     <div class="contact-hero hero-image-sizing">
         {% include 'includes/mobile-nav.html' %}
+        {% include 'includes/auth_nav.html' with render_dark=True %}
         <div class="shopping-cart z-3">{% include 'includes/cart_nav.html' %}</div>
         <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
     </div>
@@ -67,7 +68,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 {% for status, value in order.STATUS_OPTIONS %}
                                     <li>
-                                        <a class="dropdown-item" href="{% url 'update_status' order.id value %}">
+                                        <a class="dropdown-item" href="{% url 'update_status' order.id status %}">
                                             {{ status }}
                                         </a>
                                     </li>

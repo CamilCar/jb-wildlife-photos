@@ -3,6 +3,7 @@
 {% block content %}
     <div class="webshop-hero hero-image-sizing">
         {% include 'includes/mobile-nav.html' with render_dark_navbar=True %}
+        {% include 'includes/auth_nav.html' with render_dark=True %}
         <div class="shopping-cart z-3">{% include 'includes/cart_nav.html' %}</div>
         <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
     </div>
@@ -71,7 +72,7 @@
             </div>
             <hr class="bg-secondary border-2 border-top border-secondary">
             <div id="shipping-information-form" class="w-50 center mx-auto text-light">
-                <form method="post" action="{% url 'create_order' %}">
+                <form id="payment-form" method="post" action="{% url 'create_order' payment_intent_id %}">
                     {% csrf_token %}
                     {{ shipping_information }}
                     <!-- Code from CI boutique_ado -->
@@ -80,6 +81,7 @@
                         <!-- A Stripe card element will go here -->
                         <div class="mb-3" id="card-element"></div>
                         <!-- Used to display form errors -->
+                        
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     </fieldset>
                     <button id="submit-button" class="btn btn-success" type="submit">Complete order</button>
@@ -95,7 +97,6 @@
         $('#continue-checkout-shipping').on('click', () => {
             $('#shipping-information-form').show()
         })
-
     </script>
 {% endblock content %}
 <!-- Code from ci boutiqe_ado project -->

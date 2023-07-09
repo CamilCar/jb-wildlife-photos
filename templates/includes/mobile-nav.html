@@ -1,3 +1,4 @@
+<div class="d-flex">
 <nav class="navbar navbar-expand-lg bg-body-tertiary mobile-nav">
   <div class="container-fluid">
     <button class="navbar-toggler"
@@ -30,6 +31,9 @@
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
         {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link text-light" href="{% url 'my_orders' %}">My orders</a>
+        </li>
           <li class="nav-item">
             <a class="nav-link text-light" href="{% url 'account_logout' %}">Log Out</a>
           </li>
@@ -42,6 +46,10 @@
     </div>
   </div>
 </nav>
+<div class="logged-in-as-mobile mt-2" style="margin-left: 15%">
+  <p>Logged in as {{user.username}}</p>
+</div>
+</div>
 <script>
   const navLinks = document.getElementsByClassName("nav-link")
     if ( "{{render_dark_navbar}}"  ) {
