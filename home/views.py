@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
+from cart.forms import ConfirmBookingForm
 from orders.models import Order
-from webshop.models import PrintOption
 
 # Create your views here.
 
@@ -41,6 +41,17 @@ def pricing(request):
     """ Returns prices page """
 
     return render(request, 'pricing/pricing.html')
+
+
+@login_required
+def my_orders(request):
+    """ Returns my orders page to see all historical orders for the logged in user """
+
+    orders = Order.objects.filter(user=request.user)
+
+    return render(request, 'my_orders/my_orders.html', {
+        "orders": orders
+    })
 
 
 @user_passes_test(lambda u: u.is_superuser)

@@ -10,7 +10,7 @@ from webshop.models import PrintOption
 
 
 @login_required
-def create_order(request):
+def create_order(request, payment_intent_id):
     shipping_information_form = ConfirmBookingForm(request.POST)
 
     if shipping_information_form.is_valid():
@@ -22,7 +22,8 @@ def create_order(request):
 
         # Save order
         new_order = Order(user=user,
-                          shipping_information=new_shipping_information)
+                          shipping_information=new_shipping_information,
+                          payment_intent_id=payment_intent_id)
         new_order.save()
 
         # Save cart item for each print in cart

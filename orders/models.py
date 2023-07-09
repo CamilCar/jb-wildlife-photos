@@ -52,13 +52,15 @@ class Order(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True,
                              blank=True)
-    prints = models.ManyToManyField(OrderItem, blank=True)
+    prints = models.ManyToManyField(OrderItem,
+                                    blank=True)
     date_ordered = models.DateField(auto_now_add=True)
     status = models.CharField(max_length=255, choices=STATUS_OPTIONS,
                               default='new')
     shipping_information = models.ForeignKey(ShippingInformation,
                                              on_delete=models.CASCADE,
                                              related_name='shipping_information')
+    payment_intent_id = models.CharField(max_length=255, blank=True)
 
     @property
     def total_price(self):

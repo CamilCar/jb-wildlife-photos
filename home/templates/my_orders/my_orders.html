@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="contact-hero hero-image-sizing">
+        {% include 'includes/mobile-nav.html' %}
+        {% include 'includes/auth_nav.html' with render_dark=True %}
+        <div class="shopping-cart z-3">{% include 'includes/cart_nav.html' %}</div>
+        <div class="hero-text">{% include 'includes/main-nav.html' %}</div>
+    </div>
+    <div id="line-3"></div>
+    <div class="page-wrapper">
+        <div class="page-title text-center">
+            <span>My orders</span>
+            <div id="line-2"></div>
+        </div>
+        <div class="page-text text-center">
+            {% if orders %}
+                {% for order in orders %}
+                <div class="container mt-5">
+                    <div class="row">
+                      <div class="col align-self-center">
+                        <p class="mb-0 mt-0 page-p">
+                            {{ order.date_ordered }}
+                        </p>
+                      </div>
+                      <div class="col align-self-center">
+                        {% for print in order.prints.all %}
+                        <div>
+                            <span class="mb-0 mt-0 page-p">
+                                {{ print.amount }}x
+                            </span>
+                            <span class="mb-0 mt-0 page-p">
+                                {{ print.print.name }}
+                            </span>
+                            <span class="mb-0 mt-0 page-p">
+                                {{ print.print_option.size }}
+                            </span>
+                        </div>
+                        {% endfor %} 
+                      </div>
+                      <div class="col align-self-center">
+                        <p class="mb-0 mt-0 page-p">
+                            {{ order.status }}
+                        </p>
+                      </div>
+                      <div class="col align-self-center">
+                        {% if order.status == "new" %}
+                            <a href="{% url 'edit_order' order.id %}" class="btn btn-primary text-light text-decoration-none">
+                                Edit order
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="col align-self-center">
+                        {% if order.status == "new" %}
+                            <a href="{% url 'delete_order' order.id %}" class="btn btn-danger text-light text-decoration-none">
+                                Delete order
+                            </a>
+                        {% endif %}
+                    </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-light">
+                    There are no orders to show...
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
